@@ -42,14 +42,17 @@ export const noteService = {
   remove,
   save,
   getDefaultFilter,
+  pinNote,
 }
 
 function query(filterBy = {}) {
-  console.log('filterBy service:', filterBy)
   return asyncStorageService.query(NOTE_KEY).then((notes) => {
     if (filterBy.type) {
       // const regExp = new RegExp(filterBy.title, 'i')
       notes = notes.filter((note) => note.title === filterBy.type)
+    }
+    if (filterBy.pinned) {
+      notes = notes.filter((note) => note.isPinned)
     }
     return notes
   })
@@ -71,17 +74,27 @@ function save(note) {
   }
 }
 
-// function getEmptyBook() {
-//   return {
-//     id: '',
-//     title: '',
-//     listPrice: {
-//       amount: 0,
-//       currencyCode: '',
-//       isOnSale: false,
-//     },
-//   }
-// }
+function pinNote(note) {
+  return query({ pinned: true }).then((res) => {
+    const pinnedNote = res[0]
+    if (pinnedNote) {
+      if (note.id === pinnedNote.id) {
+        note.isPinned = false
+        return save(note)
+      } else {
+        pinnedNote.isPinned = false
+        note.isPinned = true
+        return save(pinnedNote).then(() => save(note))
+      }
+    } else {
+      note.isPinned = true
+      console.log('note', note)
+      return save(note)
+    }
+  })
+}
+
+function getPinnedNote() {}
 
 function getDefaultFilter() {
   return { type: '' }

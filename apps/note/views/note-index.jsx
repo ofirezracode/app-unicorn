@@ -41,10 +41,16 @@ export function NoteIndex() {
       .then(() => showSuccessMsg('Note Saved'))
   }
 
+  function onPinNote(note) {
+    noteService
+      .pinNote(note)
+      .then(() => loadNotes())
+      .then(() => showSuccessMsg('Note Saved'))
+  }
   return (
     <section className="note-index view">
       <NewNote onAddNote={onAddNote}></NewNote>
-      <NoteList onEditNote={onEditNote} onDeleteNote={onDeleteNote} notes={notes}></NoteList>
+      <NoteList onPinNote={onPinNote} onEditNote={onEditNote} onDeleteNote={onDeleteNote} notes={notes}></NoteList>
     </section>
   )
 }

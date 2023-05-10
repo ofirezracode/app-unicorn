@@ -5,8 +5,7 @@ import { NoteTodos } from './dynamic-previews/note-todos.jsx'
 import { NoteTxt } from './dynamic-previews/note-txt.jsx'
 import { NoteVideo } from './dynamic-previews/note-video.jsx'
 
-export function NotePreview({ note, onDeleteNote, onEditNote }) {
-  const [isPinned, setIsPinned] = useState(note.isPinned)
+export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote }) {
   const [isEditable, setIsEditable] = useState(false)
 
   const [noteStyle, setNoteStyle] = useState(
@@ -16,6 +15,12 @@ export function NotePreview({ note, onDeleteNote, onEditNote }) {
           backgroundColor: '#ff6000',
         }
   )
+
+  function onSetNoteColor(e) {
+    const newColor = e.target.value
+    const style = { backgroundColor: newColor }
+    onSetNoteStyle(style)
+  }
 
   function onSetNoteStyle(newStyle) {
     setNoteStyle((prevStyle) => ({ ...prevStyle, ...newStyle }))
@@ -29,11 +34,17 @@ export function NotePreview({ note, onDeleteNote, onEditNote }) {
     <article className="note-preview" style={noteStyle}>
       <DynamicCmp onFinishedEdit={onToggleEditable} onEditNote={onEditNote} isEditable={isEditable} note={note} />
       <ul className="clean-list">
-        <button className={`pin ${isPinned ? 'pinned' : ''}`}>Pin</button>
-        <button>Color</button>
+        <button onClick={() => onPinNote(note)} className={`pin ${note.isPinned ? 'pinned' : ''}`}>
+          Pin
+        </button>
+        <label>
+          Color
+          <input onChange={(e) => onSetNoteColor(e)} type="color" />
+        </label>
         <button>Mail</button>
         <button onClick={onToggleEditable}>Edit</button>
         <button onClick={() => onDeleteNote(note.id)}>Delete</button>
+        <p>{note.isPinned ? 'true' : 'false'}</p>
       </ul>
     </article>
   )

@@ -1,0 +1,4 @@
+.note-preview input[type='color'] {
+  opacity: 0;
+  width: 0;
+}
