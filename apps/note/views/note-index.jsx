@@ -3,6 +3,8 @@ import { noteService } from '../services/note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
 import { NewNote } from '../cmps/new-note.jsx'
 
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+
 const { useState, useEffect } = React
 
 export function NoteIndex() {
@@ -15,21 +17,34 @@ export function NoteIndex() {
   }, [filterBy])
 
   function loadNotes() {
-    noteService.query(filterBy).then((notes) => setNotes(notes))
+    return noteService.query(filterBy).then((notes) => setNotes(notes))
   }
 
   function onAddNote(note) {
-    noteService.save(note).then(() => loadNotes())
+    noteService
+      .save(note)
+      .then(() => loadNotes())
+      .then(() => showSuccessMsg('Note Added'))
   }
 
   function onDeleteNote(noteId) {
-    noteService.remove(noteId).then(() => loadNotes())
+    noteService
+      .remove(noteId)
+      .then(() => loadNotes())
+      .then(() => showSuccessMsg('Note Deleted'))
+  }
+
+  function onEditNote(note) {
+    noteService
+      .save(note)
+      .then(() => loadNotes())
+      .then(() => showSuccessMsg('Note Saved'))
   }
 
   return (
     <section className="note-index view">
       <NewNote onAddNote={onAddNote}></NewNote>
-      <NoteList onDeleteNote={onDeleteNote} notes={notes}></NoteList>
+      <NoteList onEditNote={onEditNote} onDeleteNote={onDeleteNote} notes={notes}></NoteList>
     </section>
   )
 }
