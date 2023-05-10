@@ -1,0 +1,20 @@
+:root {
+  --clr1: #454545;
+  --clr2: #ff6000;
+  --clr3: #ffa559;
+  --clr4: #ffe6c7;
+
+  --gray1: #d4d4d8;
+  --gray2: #71717a;
+  --gray3: #3f3f46;
+}
+
+body {
+  background-color: var(--clr1);
+  color: var(--clr3);
+}
+
+.app-header {
+  color: var(--clr1);
+  background-color: var(--clr3);
+}
