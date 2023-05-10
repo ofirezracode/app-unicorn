@@ -29,7 +29,7 @@ export function NotePreview({ note, onDeleteNote }) {
         <button>Color</button>
         <button>Mail</button>
         <button>Edit</button>
-        <button onClick={() => onDeleteNote(note)}>Delete</button>
+        <button onClick={() => onDeleteNote(note.id)}>Delete</button>
       </ul>
     </article>
   )

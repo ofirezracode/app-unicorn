@@ -22,7 +22,9 @@ export function NoteIndex() {
     noteService.save(note).then(() => loadNotes())
   }
 
-  function onDeleteNote(note) {}
+  function onDeleteNote(noteId) {
+    noteService.remove(noteId).then(() => loadNotes())
+  }
 
   return (
     <section className="note-index view">
