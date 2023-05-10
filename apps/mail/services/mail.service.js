@@ -1,68 +1,112 @@
 // mail service
-import {asyncStorageService} from '../../../services/async-storage.service.js'
-import {storageService} from '../../../services/storage.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
+import { storageService } from '../../../services/storage.service.js'
+import {utilService} from '../../../services/util.service.js'
 
-const MAIL_KEY='mailDB'
+const MAIL_KEY = 'mailDB'
 _createMails()
 export const mailService = {
-query,
+  query,
+  get,
+  setReadMail,
 }
 
-function query (){
-return asyncStorageService.query(MAIL_KEY)
-.then(mails=>{
-    return mails
-})
+function query() {
+  return asyncStorageService.query(MAIL_KEY)
+    .then(mails => mails)
 }
 
+function get(mailId) {
+  return asyncStorageService.get(MAIL_KEY, mailId)
+}
 
-function _createMails(){
+function setReadMail(id){
+  let mails= storageService.loadFromStorage(MAIL_KEY)
+}
 
- const   mails=[
+function _createMails() {
+
+  const mails = [
     {
-      "title": "Important Meeting Reminder",
-      "content": "Dear all,\n\nThis is a friendly reminder about our upcoming meeting on Wednesday at 2 PM in the conference room. Please make sure to come prepared with any necessary materials.\n\nBest,\nJohn",
-      "timeSent": "2022-01-03T14:00:00Z"
+      id: '1a',
+      title: "Meeting Invitation",
+      sender: "John Smith",
+      content: "Please join us for a meeting at 2 PM on Thursday.",
+      timeSent: "2023-05-10T12:30:00Z",
+      isRead:false
     },
     {
-      "title": "New Product Launch",
-      "content": "Hello,\n\nI wanted to let you know that our new product line will be launching next week. Please take a look at the attached press release for more information.\n\nBest,\nJane",
-      "timeSent": "2022-01-05T10:30:00Z"
+      id: '2b',
+      title: "New Job Offer",
+      sender: "HR Department",
+      content: "We are pleased to offer you the position of Senior Software Engineer.",
+      timeSent: "2023-05-09T09:45:00Z",
+      isRead:false
     },
     {
-      "title": "Holiday Schedule",
-      "content": "Dear employees,\n\nI hope you all had a wonderful holiday season. Please note that our office will be closed on Monday, January 3rd in observance of New Year's Day.\n\nBest,\nEmily",
-      "timeSent": "2022-01-01T08:00:00Z"
+      id: 'fsdg',
+      title: "Vacation Request",
+      sender: "Jane Doe",
+      content: "I would like to request vacation time from June 1st to June 15th.",
+      timeSent: "2023-05-08T14:20:00Z",
+      isRead:false
     },
     {
-      "title": "Urgent Request",
-      "content": "Hi,\n\nI need your assistance with a time-sensitive matter. Please see the attached document for more information and let me know how you can help.\n\nThanks,\nMark",
-      "timeSent": "2022-01-07T16:45:00Z"
+      id: 'awsr',
+      title: "Product Launch",
+      sender: "Marketing Department",
+      content: "We are excited to announce the launch of our new product line.",
+      timeSent: "2023-05-07T10:15:00Z",
+      isRead:false
     },
     {
-      "title": "Monthly Report",
-      "content": "Hello,\n\nPlease find attached the monthly report for December. Let me know if you have any questions or concerns.\n\nBest,\nSarah",
-      "timeSent": "2022-01-02T09:00:00Z"
+      id: 'hjfr',
+      title: "Reminder: Project Deadline",
+      sender: "Project Manager",
+      content: "This is a reminder that the project is due on Friday.",
+      timeSent: "2023-05-06T16:50:00Z",
+      isRead:false
     },
     {
-      "title": "Office Move",
-      "content": "Dear all,\n\nI wanted to inform you that our office will be moving to a new location next month. Please see the attached memo for more information.\n\nBest,\nMike",
-      "timeSent": "2022-01-06T11:15:00Z"
+      id: 'aewwe',
+      title: "Welcome Aboard!",
+      sender: "HR Department",
+      content: "We are pleased to welcome you to our team.",
+      timeSent: "2023-05-05T11:30:00Z",
+      isRead:false
     },
     {
-      "title": "Congratulations!",
-      "content": "Hi,\n\nI just wanted to congratulate you on a job well done. Your hard work and dedication have not gone unnoticed.\n\nBest,\nJulie",
-      "timeSent": "2022-01-08T13:00:00Z"
+      id: 'ouiy',
+      title: "Password Reset",
+      sender: "IT Department",
+      content: "You have requested a password reset. Please follow the link to reset your password.",
+      timeSent: "2023-05-04T13:20:00Z",
+      isRead:false
     },
     {
-      "title": "Training Opportunity",
-      "content": "Hello,\n\nI wanted to bring to your attention a training opportunity that I think would be beneficial for our team. Please see the attached flyer for more information.\n\nBest,\nTom",
-      "timeSent": "2022-01-04T14:30:00Z"
+      id: 'vbfs',
+      title: "Feedback Request",
+      sender: "Customer Service",
+      content: "We would appreciate your feedback on our service.",
+      timeSent: "2023-05-03T09:00:00Z",
+      isRead:false
     },
     {
-      "title": "Reminder: Employee Evaluations",
-      "content": "Dear employees,\n\nI wanted to remind you that employee evaluations are due by the end of the week. Please make sure to submit them to HR as soon as possible.\n\nBest,\nLinda",
-      "timeSent": "2022-01-09T10:00:00Z"
-    }]
-    storageService.saveToStorage(MAIL_KEY,mails)
+      id: 'yrtyu',
+      title: "Travel Itinerary",
+      sender: "Travel Agent",
+      content: "Please find attached your travel itinerary for your upcoming trip.",
+      timeSent: "2023-05-02T12:10:00Z",
+      isRead:false
+    },
+    {
+      id: 'acaz',
+      title: "Job Application Confirmation",
+      sender: "HR Department",
+      content: "Thank you for submitting your job application.",
+      timeSent: "2023-05-01T15:45:00Z",
+      isRead:false
+    }
+  ];
+  storageService.saveToStorage(MAIL_KEY, mails)
 }

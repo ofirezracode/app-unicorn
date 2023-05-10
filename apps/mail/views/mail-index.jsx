@@ -6,23 +6,7 @@ export function MailIndex() {
         <section className="mail-index">  
             mail app
             <MailTable/>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             </section>
-
-
-
     )
 }
 

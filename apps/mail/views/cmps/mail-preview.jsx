@@ -1,10 +1,10 @@
 export function MailPreview({ mail }) {
 
     return (
-        <section>
-            <td>{mail.title}</td>
-            <td>{mail.content}</td>
-            <td>{mail.timeSent}</td>
-        </section>
+        <ul>
+            <li>{mail.title}</li>
+            <li>{mail.content}</li>
+            <li>{mail.timeSent}</li>
+        </ul>
     )
 }

@@ -1,22 +1,43 @@
-
 const { useState, useEffect } = React
+const { Link, useNavigate } = ReactRouterDOM
+
+
 import { mailService } from "../../services/mail.service.js"
-import {MailPreview} from "../cmps/mail-preview.jsx"
+import { MailPreview } from "../cmps/mail-preview.jsx"
+
 export function MailTable() {
+
     const [mails, setMails] = useState([])
-    useEffect(()=>(
+    const navigate = useNavigate()
+    useEffect(() => (
+        loadMails()
+    ), [])
+
+    function loadMails() {
         mailService.query()
-        .then(mails => {
-            setMails(mails)
-        }) 
-    ),[])
-     
-    console.log(mails)
+            .then(mails => {
+                setMails(mails)
+            })
+    }
+
+    function onHandelClick(id) {
+        ReadMail(id)
+        navigate(`/mail/${id}`)
+    }
+
+    function ReadMail(id){
+        mailService.setReadMail(id)
+    }
+
     return (
-        <table>
-            {mails.map(mail=>(
-               <tr> <MailPreview mail={mail}/></tr>
+        <ul >
+            {mails.map(mail => (
+                <li key={mail.id} onClick={() => onHandelClick(mail.id)} >
+                    <MailPreview mail={mail} />
+                    {!mail.isRead && '🔵'}
+                    {mail.isRead && '⚪'}
+                </li>
             ))}
-        </table>
+        </ul>
     )
 }
