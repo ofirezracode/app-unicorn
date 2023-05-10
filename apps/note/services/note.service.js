@@ -47,12 +47,20 @@ export const noteService = {
 
 function query(filterBy = {}) {
   return asyncStorageService.query(NOTE_KEY).then((notes) => {
-    if (filterBy.type) {
-      // const regExp = new RegExp(filterBy.title, 'i')
-      notes = notes.filter((note) => note.title === filterBy.type)
-    }
+    // if (filterBy.type) {
+    //   // const regExp = new RegExp(filterBy.title, 'i')
+    //   notes = notes.filter((note) => note.title === filterBy.type)
+    // }
     if (filterBy.pinned) {
       notes = notes.filter((note) => note.isPinned)
+    }
+    if (!filterBy.pinned) {
+      let pinnedNote = notes.filter((note) => note.isPinned)
+      const pinnedNoteIndex = notes.indexOf(pinnedNote[0])
+      if (pinnedNoteIndex >= 0) {
+        pinnedNote = notes.splice(pinnedNoteIndex, 1)
+        notes.unshift(pinnedNote[0])
+      }
     }
     return notes
   })
