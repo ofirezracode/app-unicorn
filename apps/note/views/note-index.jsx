@@ -45,12 +45,28 @@ export function NoteIndex() {
     noteService
       .pinNote(note)
       .then(() => loadNotes())
-      .then(() => showSuccessMsg('Note Saved'))
+      .then(() => showSuccessMsg('Note Pin'))
   }
+
+  function onDuplicateNote(note) {
+    note.id = false
+    note.isPinned = false
+    noteService
+      .save(note)
+      .then(() => loadNotes())
+      .then(() => showSuccessMsg('Note Duplicated'))
+  }
+
   return (
     <section className="note-index view">
       <NewNote onAddNote={onAddNote}></NewNote>
-      <NoteList onPinNote={onPinNote} onEditNote={onEditNote} onDeleteNote={onDeleteNote} notes={notes}></NoteList>
+      <NoteList
+        onDuplicateNote={onDuplicateNote}
+        onPinNote={onPinNote}
+        onEditNote={onEditNote}
+        onDeleteNote={onDeleteNote}
+        notes={notes}
+      ></NoteList>
     </section>
   )
 }

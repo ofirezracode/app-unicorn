@@ -1,11 +1,12 @@
 const { useState } = React
+const { Link } = ReactRouterDOM
 
 import { NoteImg } from './dynamic-previews/note-img.jsx'
 import { NoteTodos } from './dynamic-previews/note-todos.jsx'
 import { NoteTxt } from './dynamic-previews/note-txt.jsx'
 import { NoteVideo } from './dynamic-previews/note-video.jsx'
 
-export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote }) {
+export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDuplicateNote }) {
   const [isEditable, setIsEditable] = useState(false)
 
   const [noteStyle, setNoteStyle] = useState(
@@ -41,7 +42,8 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote }) {
           Color
           <input onChange={(e) => onSetNoteColor(e)} type="color" />
         </label>
-        <button>Mail</button>
+        <Link to={`/mail?noteId=${note.id}`}>Mail</Link>
+        <button onClick={() => onDuplicateNote(note)}>Duplicate</button>
         <button onClick={onToggleEditable}>Edit</button>
         <button onClick={() => onDeleteNote(note.id)}>Delete</button>
         <p>{note.isPinned ? 'true' : 'false'}</p>
