@@ -3,7 +3,7 @@ const { NavLink, Link } = ReactRouterDOM
 export function AppHeader() {
   return (
     <header className="app-header flex between">
-      <Link to="/">Sprint 3</Link>
+      <Link to="/">Uniapp 🦄</Link>
       <nav className="clean-list flex align-center">
         <li>
           <NavLink to="/">Home</NavLink>
