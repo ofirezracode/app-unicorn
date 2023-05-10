@@ -5,29 +5,30 @@ const { Link, useNavigate } = ReactRouterDOM
 import { mailService } from "../../services/mail.service.js"
 import { MailPreview } from "../cmps/mail-preview.jsx"
 
-export function MailTable() {
+export function MailTable({mails}) {
 
-    const [mails, setMails] = useState([])
+    // const [mails, setMails] = useState([])
     const navigate = useNavigate()
-    useEffect(() => (
-        loadMails()
-    ), [])
+    // useEffect(() => (
+    //     loadMails()
+    // ), [])
 
-    function loadMails() {
-        mailService.query()
-            .then(mails => {
-                setMails(mails)
-            })
-    }
+    // function loadMails() {
+    //     mailService.query()
+    //         .then(mails => {
+    //             setMails(mails)
+    //         })
+    // }
 
     function onHandelClick(id) {
-        ReadMail(id)
+        mailService.setReadMail(id)
+        // ReadMail(id)
         navigate(`/mail/${id}`)
     }
 
-    function ReadMail(id){
-        mailService.setReadMail(id)
-    }
+    // function ReadMail(id){
+        
+    // }
 
     return (
         <ul >
