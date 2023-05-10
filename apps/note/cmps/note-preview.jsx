@@ -5,7 +5,7 @@ import { NoteTodos } from './dynamic-previews/note-todos.jsx'
 import { NoteTxt } from './dynamic-previews/note-txt.jsx'
 import { NoteVideo } from './dynamic-previews/note-video.jsx'
 
-export function NotePreview({ note }) {
+export function NotePreview({ note, onDeleteNote }) {
   const [cmpType, setCmpType] = useState(note.type)
   const [isPinned, setIsPinned] = useState(note.isPinned)
 
@@ -29,7 +29,7 @@ export function NotePreview({ note }) {
         <button>Color</button>
         <button>Mail</button>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => onDeleteNote(note)}>Delete</button>
       </ul>
     </article>
   )

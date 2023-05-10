@@ -22,10 +22,12 @@ export function NoteIndex() {
     noteService.save(note).then(() => loadNotes())
   }
 
+  function onDeleteNote(note) {}
+
   return (
     <section className="note-index view">
       <NewNote onAddNote={onAddNote}></NewNote>
-      <NoteList notes={notes}></NoteList>
+      <NoteList onDeleteNote={onDeleteNote} notes={notes}></NoteList>
     </section>
   )
 }
