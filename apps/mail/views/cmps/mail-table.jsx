@@ -33,6 +33,7 @@ export function MailTable({ mails, onDeleteMail }) {
 
     return (
         <ul>
+            {console.log(mails)}
             {mails.map((mail) => (
                 <li key={mail.id} >
                     <div>

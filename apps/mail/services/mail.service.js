@@ -15,9 +15,24 @@ export const mailService = {
   getDefaultFilter,
 }
 
-function query() {
+function query(filterBy = {}) {
+
   return asyncStorageService.query(MAIL_KEY)
-    .then(mails => mails)
+    .then(mails => {
+     
+      if (filterBy.searchBy) {
+        const regExp = new RegExp(filterBy.searchBy, 'i')
+        mails = mails.filter(mail => regExp.test(mail.content || mail.title))
+        
+      }
+      if (filterBy.isRead){
+        console.log(filterBy.isRead)
+        let bool=("true"===filterBy.isRead)?true:false
+        mails=mails.filter(mail=> mail.isRead==bool)
+
+      }
+      return mails
+    } )
 }
 
 function get(mailId) {
@@ -36,22 +51,22 @@ function setReadMail(mailId) {
   // console.log(mail)
 }
 function getEmptyMail() {
-  return { id: '', title: '', sender: '', content: '', timeSent: new Date, isRead: true }
+  return { id: '', title: '', from: '', content: '', timeSent: new Date, isRead: true, criteria:'sent' }
 }
 function save(mail) {
   return asyncStorageService.post(MAIL_KEY, mail)
 }
 
-function remove (mailId) {
+function remove(mailId) {
   return asyncStorageService.remove(MAIL_KEY, mailId)
 }
 
-function getDefaultFilter(searchParams = { get: () => { } }){
-  console.log(searchParams)
+function getDefaultFilter(searchParams = { get: () => { } }) {
+  
   return {
-    txt: searchParams.get('txt') || '',
-    minSpeed: searchParams.get('minSpeed') || ''
-}
+    searchBy: searchParams.get('searchBy') || '',
+    isRead: searchParams.get('isRead') || ''
+  }
 }
 
 function _createMails() {
@@ -61,82 +76,92 @@ function _createMails() {
       {
         id: '1a',
         title: "Meeting Invitation",
-        sender: "John Smith",
+        from: "John Smith",
         content: "Please join us for a meeting at 2 PM on Thursday.",
         timeSent: "2023-05-10T12:30:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: '2b',
         title: "New Job Offer",
-        sender: "HR Department",
+        from: "HR Department",
         content: "We are pleased to offer you the position of Senior Software Engineer.",
         timeSent: "2023-05-09T09:45:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'fsdg',
         title: "Vacation Request",
-        sender: "Jane Doe",
+        from: "Jane Doe",
         content: "I would like to request vacation time from June 1st to June 15th.",
         timeSent: "2023-05-08T14:20:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'awsr',
         title: "Product Launch",
-        sender: "Marketing Department",
+        from: "Marketing Department",
         content: "We are excited to announce the launch of our new product line.",
         timeSent: "2023-05-07T10:15:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'hjfr',
         title: "Reminder: Project Deadline",
-        sender: "Project Manager",
+        from: "Project Manager",
         content: "This is a reminder that the project is due on Friday.",
         timeSent: "2023-05-06T16:50:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'aewwe',
         title: "Welcome Aboard!",
-        sender: "HR Department",
+        from: "HR Department",
         content: "We are pleased to welcome you to our team.",
         timeSent: "2023-05-05T11:30:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'ouiy',
         title: "Password Reset",
-        sender: "IT Department",
+        from: "IT Department",
         content: "You have requested a password reset. Please follow the link to reset your password.",
         timeSent: "2023-05-04T13:20:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'vbfs',
         title: "Feedback Request",
-        sender: "Customer Service",
+        from: "Customer Service",
         content: "We would appreciate your feedback on our service.",
         timeSent: "2023-05-03T09:00:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'yrtyu',
         title: "Travel Itinerary",
-        sender: "Travel Agent",
+        from: "Travel Agent",
         content: "Please find attached your travel itinerary for your upcoming trip.",
         timeSent: "2023-05-02T12:10:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       },
       {
         id: 'acaz',
         title: "Job Application Confirmation",
-        sender: "HR Department",
+        from: "HR Department",
         content: "Thank you for submitting your job application.",
         timeSent: "2023-05-01T15:45:00Z",
-        isRead: false
+        isRead: false,
+        criteria: 'inbox'
       }
     ];
     storageService.saveToStorage(MAIL_KEY, mails)

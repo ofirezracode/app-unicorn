@@ -19,10 +19,11 @@ export function MailFilter({ filterBy, onSetFilter }) {
     return (
         <section> <h2>Filter Mails</h2>
             <form onSubmit={onSubmitFilter}>
-                <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="search for:" />
-                <select>
-                    <option value="">    </option>     <option value="true">Raed</option>
-                    <option value="false">Unread</option>
+                <input value={txt} onChange={handleChange} name="searchBy" id="searchBy" type="text" placeholder="search for:" />
+                <select value={minSpeed} onChange={handleChange}  name="isRead" id="isRead">
+                    <option value="">    </option>
+                    <option value= "true" >Raed</option>
+                    <option value= "false" >Unread</option>
                 </select>
                 {/* <label htmlFor="minSpeed">search by</label>
                 <input value={minSpeed} onChange={handleChange} type="number" name="minSpeed" id="minSpeed" placeholder="By Min Speed" /> */}
