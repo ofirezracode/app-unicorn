@@ -19,10 +19,11 @@ export function NoteImg({ note, isEditable, onEditNote, onFinishedEdit }) {
     onEditNote(note)
   }
 
+  const isEditableClass = isEditable ? 'editable' : ''
   return (
     <section className="note-img">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-      <div className="note-content">
+      <div className={`note-content ${isEditableClass}`}>
         <img src={URL} alt="image"></img>
         {!isEditable || (
           <form onSubmit={onSubmit}>

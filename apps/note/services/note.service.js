@@ -60,13 +60,30 @@ export const noteService = {
 
 function query(filterBy = {}) {
   return asyncStorageService.query(NOTE_KEY).then((notes) => {
-    // if (filterBy.type) {
-    //   // const regExp = new RegExp(filterBy.title, 'i')
-    //   notes = notes.filter((note) => note.title === filterBy.type)
-    // }
-    if (filterBy.pinned) {
-      notes = notes.filter((note) => note.isPinned)
+    if (filterBy.search) {
+      const regExp = new RegExp(filterBy.search, 'i')
+      notes = notes.filter((note) => {
+        if (note.type === 'txt') {
+          if (regExp.test(note.info.title)) return true
+          if (regExp.test(note.info.txt)) return true
+        } else if (note.type === 'img') {
+          if (regExp.test(note.info.title)) return true
+        } else if (note.type === 'todos') {
+          if (regExp.test(note.info.title)) return true
+          if (note.info.todos.some((todo) => regExp.test(todo.txt))) return true
+        } else if (note.type === 'video') {
+          if (regExp.test(note.info.title)) return true
+        }
+        return false
+      })
     }
+
+    if (filterBy.types) {
+      notes = notes.filter((note) => {
+        return filterBy.types.some((type) => type === note.type)
+      })
+    }
+
     if (!filterBy.pinned) {
       let pinnedNote = notes.filter((note) => note.isPinned)
       const pinnedNoteIndex = notes.indexOf(pinnedNote[0])

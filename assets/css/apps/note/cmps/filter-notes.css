@@ -1,0 +1,59 @@
+.filter-notes {
+  max-width: 75rem;
+  width: 100%;
+  margin-block: 2.4rem;
+  padding: 0.8rem 2.4rem;
+  border-radius: var(--border-radius-l);
+}
+
+.filter-notes .input-container {
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.filter-notes .input-container i {
+  padding-block: 0.8rem;
+  font-size: var(--icon-m);
+}
+
+.filter-notes .filter-notes-input {
+  padding-block: 0.8rem;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+
+  font-size: 2.4rem;
+}
+
+.filter-notes .filter-buttons {
+  grid-column: 2;
+  grid-row: 2;
+
+  gap: 1.2rem;
+}
+
+.filter-notes .filter-notes-icon i {
+  padding-block: 0.8rem;
+  font-size: var(--icon-m);
+  transition: all 0.2s;
+}
+
+.filter-notes .filter-notes-icon:hover i {
+  scale: 1.5;
+  padding-inline: 0.8rem;
+}
+
+.filter-notes .filter-notes-icon .fa-regular {
+  display: inline-block;
+}
+.filter-notes .filter-notes-icon .fa-solid {
+  display: none;
+}
+
+.filter-notes .filter-notes-icon.type-active .fa-regular {
+  display: none !important;
+}
+
+.filter-notes .filter-notes-icon.type-active .fa-solid {
+  display: inline-block !important;
+}

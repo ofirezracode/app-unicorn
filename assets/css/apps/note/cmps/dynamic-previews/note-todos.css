@@ -1,3 +1,7 @@
+.note-todos {
+  margin-block-end: 2.4rem;
+}
+
 .note-todos ul {
   padding-inline: 0.8rem;
 }

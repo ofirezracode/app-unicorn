@@ -2,6 +2,7 @@ import { noteService } from '../services/note.service.js'
 
 import { NoteList } from '../cmps/note-list.jsx'
 import { NewNote } from '../cmps/new-note.jsx'
+import { FilterNotes } from '../cmps/filter-notes.jsx'
 
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
 
@@ -35,6 +36,7 @@ export function NoteIndex() {
   }
 
   function onEditNote(note) {
+    console.log('edit note')
     noteService
       .save(note)
       .then(loadNotes)
@@ -57,8 +59,16 @@ export function NoteIndex() {
       .then(() => showSuccessMsg('Note Duplicated'))
   }
 
+  function onFilter(filters) {
+    noteService.query(filterBy).then(() => {
+      setFilterBy({ ...filters })
+      loadNotes
+    })
+  }
+
   return (
     <section className="note-index view flex column align-center">
+      <FilterNotes onFilter={onFilter} />
       <NewNote onAddNote={onAddNote}></NewNote>
       <NoteList
         onDuplicateNote={onDuplicateNote}

@@ -25,11 +25,12 @@ export function NoteVideo({ note, isEditable, onEditNote, onFinishedEdit }) {
     onEditNote(note)
   }
 
+  const isEditableClass = isEditable ? 'editable' : ''
   return (
     <section className="note-video">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-      <div className="note-content">
-        <iframe width="288" height="162" src={`https://www.youtube.com/embed/${videoId}`}></iframe>
+      <div className={`note-content ${isEditableClass}`}>
+        <iframe src={`https://www.youtube.com/embed/${videoId}`}></iframe>
         {!isEditable || (
           <form onSubmit={onSubmit}>
             <input onChange={onChange} value={editedVideoId} />

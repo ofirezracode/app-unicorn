@@ -24,7 +24,7 @@ export function NoteTodos({ note, onEditNote }) {
       <ul className="clean-list">
         {note.info.todos.map((todo, i) => {
           return (
-            <li key={i}>
+            <li className="flex between" key={i}>
               <NoteTodo onTodoChange={onTodoChange} todo={todo} index={i}></NoteTodo>
             </li>
           )

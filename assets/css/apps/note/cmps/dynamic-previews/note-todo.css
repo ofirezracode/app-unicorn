@@ -1,0 +1,33 @@
+.note-todos p.done {
+  text-decoration: line-through;
+}
+
+.note-todos p {
+  padding: 0.5rem 1.2rem 0.8rem;
+}
+
+.note-todos input {
+  padding: 0.5rem 1.2rem 0.8rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+}
+
+.todo-buttons {
+  gap: 0.8rem;
+}
+
+.todo-buttons button {
+  display: none;
+}
+
+.note:hover .todo-buttons button {
+  display: inline-block;
+}
+
+.note-todos button.done .fa-square {
+  display: none;
+}
+
+.note-todos button:not(.done) .fa-square-check {
+  display: none;
+}

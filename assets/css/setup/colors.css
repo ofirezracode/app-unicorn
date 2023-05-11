@@ -16,12 +16,16 @@ body {
 
 .app-header,
 .note-header input,
-.note-txt input {
+.note-txt input,
+.note-img input,
+.note-video input,
+.note-todos input {
   color: var(--clr1);
   background-color: var(--clr3);
 }
 
 .new-note,
+.filter-notes,
 .note-preview {
   color: var(--clr1);
   background-color: var(--clr4);
@@ -29,4 +33,8 @@ body {
 
 .note-preview .note-preview-buttons .pin.pinned {
   background-color: var(--clr3);
+}
+
+.note-todos p.done {
+  color: var(--gray2);
 }

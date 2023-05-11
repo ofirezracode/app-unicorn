@@ -1,4 +1,4 @@
-const { useState } = React
+const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
 import { NoteImg } from './dynamic-previews/note-img.jsx'
@@ -17,19 +17,28 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
         }
   )
 
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      const newNote = { ...note, style: noteStyle }
+      console.log('noteStyle', noteStyle)
+      onEditNote(newNote)
+    }, 500)
+    return () => {
+      clearTimeout(debounce)
+    }
+  }, [noteStyle])
+
   function onSetNoteColor(e) {
     const newColor = e.target.value
     const style = { backgroundColor: newColor }
-    onSetNoteStyle(style)
-  }
-
-  function onSetNoteStyle(newStyle) {
-    setNoteStyle((prevStyle) => ({ ...prevStyle, ...newStyle }))
+    setNoteStyle((prevStyle) => ({ ...prevStyle, ...style }))
   }
 
   function onToggleEditable() {
     setIsEditable((prevIsEditable) => !prevIsEditable)
   }
+
+  const hideEditButtonForTodosNote = note.type === 'todos' ? 'hidden' : ''
 
   return (
     <article className="note note-preview flex column" style={noteStyle}>
@@ -48,7 +57,7 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
         <button onClick={() => onDuplicateNote(note)}>
           <i className="fa-solid fa-clone"></i>
         </button>
-        <button onClick={onToggleEditable}>
+        <button className={hideEditButtonForTodosNote} onClick={onToggleEditable}>
           <i className="fa-solid fa-pen-to-square"></i>
         </button>
         <button onClick={() => onDeleteNote(note.id)}>

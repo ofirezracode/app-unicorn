@@ -1,11 +1,41 @@
 .app-header {
   padding: 1.6rem;
-  font-size: 2.4rem;
+  margin-block-end: 4.8rem;
+  font-size: 3.6rem;
   font-weight: bold;
   gap: 1.2rem;
+}
+
+.app-header > a {
+  margin-block-start: -0.8rem;
 }
 
 .app-header nav {
   font-size: 1.8rem;
   gap: 1.6rem;
+}
+
+.app-view.app-header {
+  padding: 0;
+  margin-block-end: 0;
+  display: inline-block;
+  position: fixed;
+  top: 2.4rem;
+  left: 1.4rem;
+
+  font-size: 4.8rem;
+
+  border-radius: var(--border-radius-l);
+  box-shadow: 0 0 20px rgba(255, 164, 89, 0.5);
+  overflow: hidden;
+}
+
+.app-view.app-header a {
+  display: block;
+  margin: 0 -1rem -0.5rem 0;
+  padding: 0 0 0 0.6rem;
+}
+
+.app-view.app-header nav {
+  display: none;
 }

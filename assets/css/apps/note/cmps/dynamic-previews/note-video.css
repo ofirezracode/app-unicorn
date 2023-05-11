@@ -1,3 +1,24 @@
 .note-video .note-content {
   padding-inline: 0.8rem;
 }
+
+.note-video iframe {
+  border: none;
+  height: 17.5rem;
+  width: 100%;
+
+  margin-block-end: 4.4rem;
+  border-radius: var(--border-radius-s);
+  box-shadow: 0 0 2px var(--clr1);
+}
+
+.note-video .editable iframe {
+  margin-block-end: 0.4rem;
+}
+
+.note-video input {
+  padding: 0.5rem 1.2rem 0.8rem;
+  margin-block-end: 0.8rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+}

@@ -17,10 +17,11 @@ export function NoteTxt({ note, isEditable, onEditNote, onFinishedEdit }) {
     onEditNote(note)
   }
 
+  const isEditableClass = isEditable ? 'editable' : ''
   return (
     <section className="note-txt">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-      <div className="note-content">
+      <div className={`note-content ${isEditableClass}`}>
         {isEditable || <p>{note.info.txt}</p>}
         {!isEditable || (
           <form onSubmit={onSubmit}>
