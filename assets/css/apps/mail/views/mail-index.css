@@ -1,1 +1,6 @@
  /* mail index  */
+
+ .mail-index ul li{
+    display:flex;
+    flex-direction: row;
+}
