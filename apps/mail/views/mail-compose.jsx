@@ -41,9 +41,14 @@ export function MailCompose() {
     function handelChange({target}){
         const field = target.name
         const value=target.type
-        setNewMail(prevMail=> ({...prevMail,[field]:value}))
+        
+        setNewMail(prevMail=> (
+            // console.log(prevMail)
+            {...prevMail,[field]:value}
+            ))
     }
     const {recipient,title,content}=newMail
+    console.log(recipient,title,content)
     return (
         <form onSubmit={onSend}>
             <label htmlFor="recipient">Send to:</label>

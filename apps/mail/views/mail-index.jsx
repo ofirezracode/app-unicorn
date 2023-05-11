@@ -32,16 +32,7 @@ export function MailIndex() {
         })
     }
 
-    function countUnread() {
-        if (!mails || mails.length === 0) return
-
-        let count = 0
-        for (let i = 0; i < mails.length; i++) {
-            console.log()
-            if (!mails[i].isRead) count++
-        }
-        return count
-    }
+    
     function onCompose() {
         navigate(`/mail/compose`)
     }
@@ -72,7 +63,7 @@ export function MailIndex() {
                 {' '}
                 compose
             </button>
-            <h5>unread mails:{countUnread()}</h5>
+            <h5>unread mails:{mailService.countUnread(mails)}</h5>
             mail app
             <MailTable mails={mails} onDeleteMail={onDeleteMail} />
         </section>
