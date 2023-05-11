@@ -1,21 +1,22 @@
 import { MailTable } from './cmps/mail-table.jsx'
 import { mailService } from '../services/mail.service.js'
 import { MailPreview } from '../cmps/mail-preview.jsx'
-import {MailFilter} from '../cmps/mail-filter.jsx'
+import { MailFilter } from '../cmps/mail-filter.jsx'
 
 const { useState, useEffect } = React
 const { Link, useNavigate, useSearchParams } = ReactRouterDOM
-const [searchParams, setSearchParams] = useSearchParams()
-const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter(searchParams))
+
 
 export function MailIndex() {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter(searchParams))
     const [mails, setMails] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         loadMails()
-        setSearchParams (filterBy)
+        setSearchParams(filterBy)
 
-}, [filterBy])
+    }, [filterBy])
 
     function loadMails() {
         mailService.query()
@@ -38,7 +39,7 @@ export function MailIndex() {
         navigate(`/mail/compose`)
     }
     function onDeleteMail(mailId) {
-      
+
         mailService.remove(mailId).then(() => {
             const updatedMails = mails.filter(mail => mail.id !== mailId)
             setMails(updatedMails)
