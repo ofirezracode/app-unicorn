@@ -1,6 +1,6 @@
 const { useState, useEffect, useRef } = React
 
-import { noteService } from '../../services/note.service.js'
+import { noteService } from '../services/note.service.js'
 
 export function NewNote({ onAddNote }) {
   const [inputValue, setInputValue] = useState('')
