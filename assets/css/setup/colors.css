@@ -14,7 +14,19 @@ body {
   color: var(--clr3);
 }
 
-.app-header {
+.app-header,
+.note-header input,
+.note-txt input {
   color: var(--clr1);
+  background-color: var(--clr3);
+}
+
+.new-note,
+.note-preview {
+  color: var(--clr1);
+  background-color: var(--clr4);
+}
+
+.note-preview .note-preview-buttons .pin.pinned {
   background-color: var(--clr3);
 }

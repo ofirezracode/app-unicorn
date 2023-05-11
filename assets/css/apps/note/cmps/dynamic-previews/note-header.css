@@ -1,0 +1,43 @@
+.note-header {
+  margin-block-end: 1.2rem;
+}
+
+.note-header h3 {
+  font-size: 2rem;
+}
+
+.note-header input {
+  padding: 0.6rem 1.2rem;
+  font-size: 2rem;
+  border-radius: var(--border-radius-s);
+}
+
+.note-header button {
+  /* align-self: end; */
+  background-color: inherit;
+}
+
+.note-header button .fa-regular,
+.note-header button .fa-solid {
+  display: none;
+  background-color: inherit;
+}
+
+.note-header button i {
+  font-size: var(--icon-m);
+}
+
+.note:hover .note-header button .fa-regular {
+  display: inline-block;
+}
+.note:hover .note-header button .fa-solid {
+  display: none;
+}
+
+.note:hover .note-header button.type-active .fa-regular {
+  display: none !important;
+}
+
+.note:hover .note-header button.type-active .fa-solid {
+  display: inline-block !important;
+}

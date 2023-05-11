@@ -20,13 +20,14 @@ export function NoteTxt({ note, isEditable, onEditNote, onFinishedEdit }) {
   return (
     <section className="note-txt">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-
-      {isEditable || <p>{note.info.txt}</p>}
-      {!isEditable || (
-        <form onSubmit={onSubmit}>
-          <input onChange={(e) => setEditedTxt(e.target.value)} value={editedTxt} />
-        </form>
-      )}
+      <div className="note-content">
+        {isEditable || <p>{note.info.txt}</p>}
+        {!isEditable || (
+          <form onSubmit={onSubmit}>
+            <input onChange={(e) => setEditedTxt(e.target.value)} value={editedTxt} />
+          </form>
+        )}
+      </div>
     </section>
   )
 }

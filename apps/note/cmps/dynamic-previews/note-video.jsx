@@ -28,12 +28,14 @@ export function NoteVideo({ note, isEditable, onEditNote, onFinishedEdit }) {
   return (
     <section className="note-video">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-      <iframe width="420" height="315" src={`https://www.youtube.com/embed/${videoId}`}></iframe>
-      {!isEditable || (
-        <form onSubmit={onSubmit}>
-          <input onChange={onChange} value={editedVideoId} />
-        </form>
-      )}
+      <div className="note-content">
+        <iframe width="288" height="162" src={`https://www.youtube.com/embed/${videoId}`}></iframe>
+        {!isEditable || (
+          <form onSubmit={onSubmit}>
+            <input onChange={onChange} value={editedVideoId} />
+          </form>
+        )}
+      </div>
     </section>
   )
 }

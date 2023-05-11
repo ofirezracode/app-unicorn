@@ -23,28 +23,28 @@ export function NoteIndex() {
   function onAddNote(note) {
     noteService
       .save(note)
-      .then(() => loadNotes())
+      .then(loadNotes)
       .then(() => showSuccessMsg('Note Added'))
   }
 
   function onDeleteNote(noteId) {
     noteService
       .remove(noteId)
-      .then(() => loadNotes())
+      .then(loadNotes)
       .then(() => showSuccessMsg('Note Deleted'))
   }
 
   function onEditNote(note) {
     noteService
       .save(note)
-      .then(() => loadNotes())
+      .then(loadNotes)
       .then(() => showSuccessMsg('Note Saved'))
   }
 
   function onPinNote(note) {
     noteService
       .pinNote(note)
-      .then(() => loadNotes())
+      .then(loadNotes)
       .then(() => showSuccessMsg('Note Pin'))
   }
 
@@ -53,12 +53,12 @@ export function NoteIndex() {
     note.isPinned = false
     noteService
       .save(note)
-      .then(() => loadNotes())
+      .then(loadNotes)
       .then(() => showSuccessMsg('Note Duplicated'))
   }
 
   return (
-    <section className="note-index view">
+    <section className="note-index view flex column align-center">
       <NewNote onAddNote={onAddNote}></NewNote>
       <NoteList
         onDuplicateNote={onDuplicateNote}

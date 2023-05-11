@@ -1,1 +1,6 @@
- /* note list */
+.note-list {
+}
+
+.note-list > ul {
+  columns: 4 auto;
+}

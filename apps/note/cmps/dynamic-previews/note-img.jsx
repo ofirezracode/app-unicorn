@@ -22,13 +22,14 @@ export function NoteImg({ note, isEditable, onEditNote, onFinishedEdit }) {
   return (
     <section className="note-img">
       <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
-
-      <img src={`${URL}`} alt="image"></img>
-      {!isEditable || (
-        <form onSubmit={onSubmit}>
-          <input onChange={(e) => setEditedURL(e.target.value)} value={editedURL} />
-        </form>
-      )}
+      <div className="note-content">
+        <img src={URL} alt="image"></img>
+        {!isEditable || (
+          <form onSubmit={onSubmit}>
+            <input onChange={(e) => setEditedURL(e.target.value)} value={editedURL} />
+          </form>
+        )}
+      </div>
     </section>
   )
 }
