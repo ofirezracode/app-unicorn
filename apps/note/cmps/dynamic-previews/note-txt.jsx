@@ -1,5 +1,7 @@
 const { useState } = React
 
+import { NoteHeader } from './note-header.jsx'
+
 export function NoteTxt({ note, isEditable, onEditNote, onFinishedEdit }) {
   const [editedTxt, setEditedTxt] = useState(note.info.txt)
 
@@ -10,8 +12,15 @@ export function NoteTxt({ note, isEditable, onEditNote, onFinishedEdit }) {
     onFinishedEdit()
   }
 
+  function onNewHeader(newHeader) {
+    note.info.title = newHeader
+    onEditNote(note)
+  }
+
   return (
     <section className="note-txt">
+      <NoteHeader header={note.info.title} onNewHeader={onNewHeader} />
+
       {isEditable || <p>{note.info.txt}</p>}
       {!isEditable || (
         <form onSubmit={onSubmit}>

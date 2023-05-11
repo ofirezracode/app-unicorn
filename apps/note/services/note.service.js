@@ -9,13 +9,16 @@ const notesData = [
     type: 'txt',
     isPinned: true,
     style: { backgroundColor: '#00d' },
-    info: { txt: 'Fullstack Me Baby!' },
+    info: { title: 'text', txt: 'Fullstack Me Baby!' },
   },
   {
     id: 'n102',
     type: 'img',
     isPinned: false,
-    info: { url: 'http://some-img/me', title: 'Bobi and Me' },
+    info: {
+      url: 'https://images.pexels.com/photos/16678544/pexels-photo-16678544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      title: 'If you like pina colada',
+    },
     style: { backgroundColor: '#00d' },
   },
   {
@@ -28,6 +31,15 @@ const notesData = [
         { txt: 'Driving license', doneAt: null },
         { txt: 'Coding power', doneAt: 187111111 },
       ],
+    },
+  },
+  {
+    id: 'n104',
+    type: 'video',
+    isPinned: false,
+    info: {
+      title: 'The Wolven Storm',
+      videoId: 'mDYqT0_9VR4',
     },
   },
 ]
@@ -43,6 +55,7 @@ export const noteService = {
   save,
   getDefaultFilter,
   pinNote,
+  extractVideoIdFromURL,
 }
 
 function query(filterBy = {}) {
@@ -102,7 +115,12 @@ function pinNote(note) {
   })
 }
 
-function getPinnedNote() {}
+function extractVideoIdFromURL(url) {
+  const urlParams = new URLSearchParams(new URL(url).search)
+  const newVideoId = urlParams.get('v')
+  if (!newVideoId) return url
+  else return newVideoId
+}
 
 function getDefaultFilter() {
   return { type: '' }

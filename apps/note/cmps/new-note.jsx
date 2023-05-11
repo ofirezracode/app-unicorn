@@ -1,5 +1,7 @@
 const { useState, useEffect, useRef } = React
 
+import { noteService } from '../../services/note.service.js'
+
 export function NewNote({ onAddNote }) {
   const [inputValue, setInputValue] = useState('')
   const [noteType, setNoteType] = useState({})
@@ -42,9 +44,28 @@ export function NewNote({ onAddNote }) {
     }
     if (noteType.type === 'txt') {
       note.info = {
+        title: 'New text',
         txt: inputValue,
       }
+    } else if (note.type === 'img') {
+      note.info = {
+        title: 'New image',
+        url: inputValue,
+      }
+    } else if (noteType.type === 'todos') {
+      const todos = inputValue.split(',').map((todo) => ({ txt: todo, doneAt: null }))
+      note.info = {
+        title: 'New todo list',
+        todos,
+      }
+    } else if (noteType.type === 'video') {
+      const videoId = noteService.extractVideoIdFromURL(inputValue)
+      note.info = {
+        title: 'New video',
+        videoId,
+      }
     }
+    setInputValue('')
     onAddNote(note)
   }
 

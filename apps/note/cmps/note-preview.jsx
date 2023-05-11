@@ -57,10 +57,10 @@ function DynamicCmp({ note, isEditable, onEditNote, onFinishedEdit }) {
     case 'txt':
       return <NoteTxt onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
     case 'todos':
-      return <NoteTodos onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteTodos onEditNote={onEditNote} note={note} />
     case 'img':
-      return <NoteImg onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteImg onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
     case 'video':
-      return <NoteVideo onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteVideo onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
   }
 }
