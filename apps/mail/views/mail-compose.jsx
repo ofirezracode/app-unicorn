@@ -12,14 +12,14 @@ function onSend(ev){
    const { target } = ev;
     const recipient = target.recipient.value;
     const title = target.title.value;
-    const message = target.message.value;
-
-    const updatedMail = {
+    const content = target.content.value;
+    console.log(newMail)
+    const updatedMail = { 
       ...newMail,
       to: recipient,
-      title: title,
-      content: message,
-    //   timeSent
+      title,
+      content,
+    //   timeSent,
     };
 
 
@@ -36,8 +36,8 @@ function onSend(ev){
             <label htmlFor="title">Title:</label>
             <input type="text" id="title" name="title" />
 
-            <label htmlFor="message">Message:</label>
-            <input type="text" id="message" name="message" />
+            <label htmlFor="content">Message:</label>
+            <input type="text" id="content" name="content" />
 
             <button type="submit">Send</button>
         </form>
