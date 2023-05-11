@@ -21,8 +21,8 @@ export function NoteHeader({ header, onNewHeader }) {
         </form>
       )}
       <button className={iconClass} onClick={() => setIsHeaderEditable((prev) => !prev)}>
-        <i class="fa-regular fa-pen-to-square"></i>
-        <i class="fa-solid fa-pen-to-square"></i>
+        <i className="fa-regular fa-pen-to-square"></i>
+        <i className="fa-solid fa-pen-to-square"></i>
       </button>
     </header>
   )

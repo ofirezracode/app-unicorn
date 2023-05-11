@@ -10,7 +10,6 @@
 /* Views */
 @import './views/home.css';
 @import './views/about.css';
-@import './views/mail-index.css';
 
 /* Components */
 @import './cmps/app-header.css';

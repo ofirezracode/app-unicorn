@@ -36,23 +36,23 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
       <DynamicCmp onFinishedEdit={onToggleEditable} onEditNote={onEditNote} isEditable={isEditable} note={note} />
       <ul className="note-preview-buttons clean-list flex center">
         <button onClick={() => onPinNote(note)} className={`pin ${note.isPinned ? 'pinned' : ''}`}>
-          <i class="fa-solid fa-thumbtack"></i>
+          <i className="fa-solid fa-thumbtack"></i>
         </button>
         <label className="flex center">
-          <i class="fa-solid fa-fill"></i>
+          <i className="fa-solid fa-fill"></i>
           <input onChange={(e) => onSetNoteColor(e)} type="color" />
         </label>
         <Link to={`/mail?noteId=${note.id}`}>
-          <i class="fa-solid fa-envelope"></i>
+          <i className="fa-solid fa-envelope"></i>
         </Link>
         <button onClick={() => onDuplicateNote(note)}>
-          <i class="fa-solid fa-clone"></i>
+          <i className="fa-solid fa-clone"></i>
         </button>
         <button onClick={onToggleEditable}>
-          <i class="fa-solid fa-pen-to-square"></i>
+          <i className="fa-solid fa-pen-to-square"></i>
         </button>
         <button onClick={() => onDeleteNote(note.id)}>
-          <i class="fa-solid fa-trash"></i>
+          <i className="fa-solid fa-trash"></i>
         </button>
       </ul>
     </article>
