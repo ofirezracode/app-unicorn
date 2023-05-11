@@ -13,7 +13,7 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
     note.style
       ? { ...note.style }
       : {
-          backgroundColor: '#ff6000',
+          backgroundColor: '#ffe6c7',
         }
   )
 
@@ -32,21 +32,28 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
   }
 
   return (
-    <article className="note-preview" style={noteStyle}>
+    <article className="note note-preview flex column" style={noteStyle}>
       <DynamicCmp onFinishedEdit={onToggleEditable} onEditNote={onEditNote} isEditable={isEditable} note={note} />
-      <ul className="clean-list">
+      <ul className="note-preview-buttons clean-list flex center">
         <button onClick={() => onPinNote(note)} className={`pin ${note.isPinned ? 'pinned' : ''}`}>
-          Pin
+          <i class="fa-solid fa-thumbtack"></i>
         </button>
-        <label>
-          Color
+        <label className="flex center">
+          <i class="fa-solid fa-fill"></i>
           <input onChange={(e) => onSetNoteColor(e)} type="color" />
         </label>
-        <Link to={`/mail?noteId=${note.id}`}>Mail</Link>
-        <button onClick={() => onDuplicateNote(note)}>Duplicate</button>
-        <button onClick={onToggleEditable}>Edit</button>
-        <button onClick={() => onDeleteNote(note.id)}>Delete</button>
-        <p>{note.isPinned ? 'true' : 'false'}</p>
+        <Link to={`/mail?noteId=${note.id}`}>
+          <i class="fa-solid fa-envelope"></i>
+        </Link>
+        <button onClick={() => onDuplicateNote(note)}>
+          <i class="fa-solid fa-clone"></i>
+        </button>
+        <button onClick={onToggleEditable}>
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button onClick={() => onDeleteNote(note.id)}>
+          <i class="fa-solid fa-trash"></i>
+        </button>
       </ul>
     </article>
   )
@@ -57,10 +64,10 @@ function DynamicCmp({ note, isEditable, onEditNote, onFinishedEdit }) {
     case 'txt':
       return <NoteTxt onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
     case 'todos':
-      return <NoteTodos onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteTodos onEditNote={onEditNote} note={note} />
     case 'img':
-      return <NoteImg onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteImg onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
     case 'video':
-      return <NoteVideo onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
+      return <NoteVideo onEditNote={onEditNote} onFinishedEdit={onFinishedEdit} isEditable={isEditable} note={note} />
   }
 }

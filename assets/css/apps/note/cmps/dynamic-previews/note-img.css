@@ -1,0 +1,9 @@
+.note-img .note-content {
+  padding-inline: 0.8rem;
+}
+
+.note-img img {
+  margin-bottom: 0.4rem;
+  border-radius: var(--border-radius-s);
+  box-shadow: 0 0 2px var(--clr1);
+}

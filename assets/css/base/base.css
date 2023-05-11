@@ -8,6 +8,16 @@ html {
   font-family: 'Lato', sans-serif;
 }
 
+:root {
+  --border-radius-s: 6px;
+  --border-radius-l: 16px;
+
+  --icon-s: 1.6rem;
+  --icon-m: 2rem;
+  --icon-l: 2.4rem;
+  --icon-xl: 3.2rem;
+}
+
 /* Dont stretch my Media */
 img,
 embed,
@@ -16,12 +26,16 @@ object {
   max-width: 100%;
 }
 
-button {
+button,
+input {
   border: none;
-  cursor: pointer;
-
   font-family: inherit;
   color: inherit;
+}
+
+button,
+i {
+  cursor: pointer;
 }
 
 a {

@@ -17,7 +17,6 @@
 @import './cmps/user-msg.css';
 
 /* Notes */
-
 /*  Views */
 @import './apps/note/views/note-index.css';
 /*  Components */
@@ -28,6 +27,8 @@
 @import './apps/note/cmps/dynamic-previews/note-todos.css';
 @import './apps/note/cmps/dynamic-previews/note-txt.css';
 @import './apps/note/cmps/dynamic-previews/note-video.css';
+@import './apps/note/cmps/dynamic-previews/note-todo.css';
+@import './apps/note/cmps/dynamic-previews/note-header.css';
 
 /* Mail */
 /*  Views */

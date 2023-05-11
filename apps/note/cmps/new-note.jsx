@@ -1,5 +1,7 @@
 const { useState, useEffect, useRef } = React
 
+import { noteService } from '../../services/note.service.js'
+
 export function NewNote({ onAddNote }) {
   const [inputValue, setInputValue] = useState('')
   const [noteType, setNoteType] = useState({})
@@ -42,48 +44,75 @@ export function NewNote({ onAddNote }) {
     }
     if (noteType.type === 'txt') {
       note.info = {
+        title: 'New text',
         txt: inputValue,
       }
+    } else if (note.type === 'img') {
+      note.info = {
+        title: 'New image',
+        url: inputValue,
+      }
+    } else if (noteType.type === 'todos') {
+      const todos = inputValue.split(',').map((todo) => ({ txt: todo, doneAt: null }))
+      note.info = {
+        title: 'New todo list',
+        todos,
+      }
+    } else if (noteType.type === 'video') {
+      const videoId = noteService.extractVideoIdFromURL(inputValue)
+      note.info = {
+        title: 'New video',
+        videoId,
+      }
     }
+    setInputValue('')
     onAddNote(note)
   }
 
   let placeholderText = noteType.placeholder
 
   return (
-    <form onSubmit={onSubmit} className="new-note">
+    <form onSubmit={onSubmit} className="new-note new-note-layout">
       <input className="new-note-input" placeholder={placeholderText} onChange={handleInputChange} value={inputValue} />
       <span
+        className="new-note-icon type-active"
         ref={txtRef}
         onClick={() => {
           onNoteTypeClick(0)
         }}
       >
-        txt
+        <i className="fa-regular fa-comment"></i>
+        <i className="fa-solid fa-comment"></i>
       </span>
       <span
+        className="new-note-icon"
         ref={imgRef}
         onClick={() => {
           onNoteTypeClick(1)
         }}
       >
-        img
+        <i className="fa-regular fa-image"></i>
+        <i className="fa-solid fa-image"></i>
       </span>
       <span
+        className="new-note-icon"
         ref={videoRef}
         onClick={() => {
           onNoteTypeClick(2)
         }}
       >
-        video
+        <i className="fa-regular fa-file-video"></i>
+        <i className="fa-solid fa-file-video"></i>
       </span>
       <span
+        className="new-note-icon"
         ref={todosRef}
         onClick={() => {
           onNoteTypeClick(3)
         }}
       >
-        todos
+        <i className="fa-regular fa-rectangle-list"></i>
+        <i className="fa-solid fa-rectangle-list"></i>
       </span>
     </form>
   )

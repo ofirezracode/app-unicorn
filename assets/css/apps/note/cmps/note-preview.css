@@ -1,4 +1,34 @@
+.note-preview {
+  padding: 1.2rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+  break-inside: avoid;
+}
+
 .note-preview input[type='color'] {
   opacity: 0;
   width: 0;
+}
+
+.note-preview button {
+  font-size: var(--icon-s);
+  background-color: inherit;
+}
+
+.note-preview .note-preview-buttons {
+  align-self: end;
+  gap: 0.8rem;
+}
+
+.note-preview .note-preview-buttons > * {
+  transition: all 0.2s;
+}
+
+.note-preview .note-preview-buttons > *:hover {
+  scale: 1.3;
+}
+
+.note-preview .note-preview-buttons .pin.pinned {
+  padding: 0.4rem 0.8rem;
+  border-radius: 50%;
 }
