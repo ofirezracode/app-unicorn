@@ -80,7 +80,7 @@ function _createMails() {
         content: "Please join us for a meeting at 2 PM on Thursday.",
         timeSent: "2023-05-10T12:30:00Z",
         isRead: false,
-        criteria: 'inbox'
+        criteria:'inbox'
       },
       {
         id: '2b',
@@ -89,7 +89,7 @@ function _createMails() {
         content: "We are pleased to offer you the position of Senior Software Engineer.",
         timeSent: "2023-05-09T09:45:00Z",
         isRead: false,
-        criteria: 'inbox'
+        criteria:'inbox'
       },
       {
         id: 'fsdg',
@@ -98,7 +98,7 @@ function _createMails() {
         content: "I would like to request vacation time from June 1st to June 15th.",
         timeSent: "2023-05-08T14:20:00Z",
         isRead: false,
-        criteria: 'inbox'
+        criteria:'inbox',
       },
       {
         id: 'awsr',
@@ -134,7 +134,7 @@ function _createMails() {
         content: "You have requested a password reset. Please follow the link to reset your password.",
         timeSent: "2023-05-04T13:20:00Z",
         isRead: false,
-        criteria: 'inbox'
+        criteria:'inbox'
       },
       {
         id: 'vbfs',
