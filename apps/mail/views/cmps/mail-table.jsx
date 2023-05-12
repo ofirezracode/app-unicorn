@@ -5,7 +5,6 @@ import { mailService } from '../../services/mail.service.js'
 import { MailPreview } from '../cmps/mail-preview.jsx'
 
 export function MailTable({ mails, onDeleteMail, onToggleStar }) {
-
   // const [mails, setMails] = useState([])
   const navigate = useNavigate()
   // useEffect(() => (
@@ -28,20 +27,20 @@ export function MailTable({ mails, onDeleteMail, onToggleStar }) {
   // function ReadMail(id){
 
   // }
-console.log(mailService.countUnread(mails))
+  console.log(mailService.countUnread(mails))
   return (
-    <ul className="mail-table">
+    <ul className="mail-table clean-list flex column">
       {mails.map((mail) => (
-        <li className={mail.isRead ? 'read-mail' : ''} key={mail.id}>
+        <li className={`mail-item ${mail.isRead ? 'read-mail' : ''} flex`} key={mail.id}>
           <div onClick={() => onToggleStar(mail.id)}>
             {!mail.isStarred && <i className="fa-regular fa-star"></i>}
             {mail.isStarred && <i className="fa-solid fa-star"></i>}
           </div>
-          <div onClick={() => onHandleClick(mail.id)}>
-            <MailPreview mail={mail} />
-          </div>
+          <MailPreview mail={mail} onHandleClick={onHandleClick} />
           <div>
-            <button onClick={() => onDeleteMail(mail.id)}>🗑</button>
+            <button onClick={() => onDeleteMail(mail.id)}>
+              <i className="fa-solid fa-trash"></i>
+            </button>
           </div>
         </li>
       ))}

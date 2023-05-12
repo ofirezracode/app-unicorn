@@ -14,27 +14,22 @@ export const mailService = {
   remove,
   getDefaultFilter,
   countUnread,
-  star
+  star,
 }
 
 function query(filterBy = {}) {
-
-  return asyncStorageService.query(MAIL_KEY)
-    .then(mails => {
-
-      if (filterBy.searchBy) {
-        const regExp = new RegExp(filterBy.searchBy, 'i')
-        mails = mails.filter(mail => regExp.test(mail.content || mail.title))
-
-      }
-      if (filterBy.isRead) {
-        console.log(filterBy.isRead)
-        let bool = ("true" === filterBy.isRead) ? true : false
-        mails = mails.filter(mail => mail.isRead == bool)
-
-      }
-      return mails
-    })
+  return asyncStorageService.query(MAIL_KEY).then((mails) => {
+    if (filterBy.searchBy) {
+      const regExp = new RegExp(filterBy.searchBy, 'i')
+      mails = mails.filter((mail) => regExp.test(mail.content || mail.title))
+    }
+    if (filterBy.isRead) {
+      console.log(filterBy.isRead)
+      let bool = 'true' === filterBy.isRead ? true : false
+      mails = mails.filter((mail) => mail.isRead == bool)
+    }
+    return mails
+  })
 }
 
 function get(mailId) {
@@ -42,10 +37,11 @@ function get(mailId) {
 }
 
 function setReadMail(mailId) {
-  asyncStorageService.query(MAIL_KEY)
+  asyncStorageService
+    .query(MAIL_KEY)
     // let  mail=get(mailId)
     .then((mails) => {
-      let mailIdx = mails.findIndex(mail => mail.id === mailId)
+      let mailIdx = mails.findIndex((mail) => mail.id === mailId)
       mails[mailIdx].isRead = true
       storageService.saveToStorage(MAIL_KEY, mails)
     })
@@ -53,18 +49,15 @@ function setReadMail(mailId) {
   // console.log(mail)
 }
 Number.prototype.padLeft = function (base, chr) {
-  var len = (String(base || 10).length - String(this).length) + 1;
-  return len > 0 ? new Array(len).join(chr || '0') + this : this;
+  var len = String(base || 10).length - String(this).length + 1
+  return len > 0 ? new Array(len).join(chr || '0') + this : this
 }
 function getEmptyMail() {
-
-  let d = new Date,
-    dformat = [d.getHours().padLeft(),
-    d.getMinutes().padLeft(),
-    d.getSeconds().padLeft()].join(':') + ' ' +
-      [(d.getMonth() + 1).padLeft(),
-      d.getDate().padLeft(),
-      d.getFullYear()].join('/');
+  let d = new Date(),
+    dformat =
+      [d.getHours().padLeft(), d.getMinutes().padLeft(), d.getSeconds().padLeft()].join(':') +
+      ' ' +
+      [(d.getMonth() + 1).padLeft(), d.getDate().padLeft(), d.getFullYear()].join('/')
   return {
     id: '',
     title: '',
@@ -73,7 +66,7 @@ function getEmptyMail() {
     timeSent: dformat,
     isRead: true,
     criteria: 'sent',
-    isStarred: false
+    isStarred: false,
   }
 }
 function save(mail) {
@@ -88,26 +81,23 @@ function remove(mailId) {
   return asyncStorageService.remove(MAIL_KEY, mailId)
 }
 
-function getDefaultFilter(searchParams = { get: () => { } }) {
-
+function getDefaultFilter(searchParams = { get: () => {} }) {
   return {
     searchBy: searchParams.get('searchBy') || '',
-    isRead: searchParams.get('isRead') || ''
+    isRead: searchParams.get('isRead') || '',
   }
 }
-function countMailType(mails, prop) {
+function countUnread(mails) {
   if (!mails || mails.length === 0) return
-  // const count = mails.reduce((acc, mail) => acc += !mail.isRead, 0)
-  const count = mails.reduce((acc, mail) => acc += mail[prop], 0)
+  const count = mails.reduce((acc, mail) => (acc += !mail.isRead), 0)
+  // const count = mails.reduce((acc, mail) => acc += mail[prop], 0)
   return count
 }
 function star(mailId) {
-  return get(mailId)
-    .then(mail => {
-      mail.isStarred = !mail.isStarred
-      return save(mail)
-    })
-
+  return get(mailId).then((mail) => {
+    mail.isStarred = !mail.isStarred
+    return save(mail)
+  })
 }
 
 function _createMails() {
@@ -116,105 +106,105 @@ function _createMails() {
     mails = [
       {
         id: '1a',
-        title: "Meeting Invitation",
-        from: "John Smith",
-        content: "Please join us for a meeting at 2 PM on Thursday.",
-        timeSent: "12:30:00 2023/05/10",
+        title: 'Meeting Invitation',
+        from: 'John Smith',
+        content: 'Please join us for a meeting at 2 PM on Thursday.',
+        timeSent: '12:30:00 2023/05/10',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: '2b',
-        title: "New Job Offer",
-        from: "HR Department",
-        content: "We are pleased to offer you the position of Senior Software Engineer.",
-        timeSent: "09:45:00 2023/05/09",
+        title: 'New Job Offer',
+        from: 'HR Department',
+        content: 'We are pleased to offer you the position of Senior Software Engineer.',
+        timeSent: '09:45:00 2023/05/09',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'fsdg',
-        title: "Vacation Request",
-        from: "Jane Doe",
-        content: "I would like to request vacation time from June 1st to June 15th.",
-        timeSent: "14:20:00 2023/05/08",
+        title: 'Vacation Request',
+        from: 'Jane Doe',
+        content: 'I would like to request vacation time from June 1st to June 15th.',
+        timeSent: '14:20:00 2023/05/08',
         isRead: false,
         criteria: 'inbox',
         isStarred: false,
       },
       {
         id: 'awsr',
-        title: "Product Launch",
-        from: "Marketing Department",
-        content: "We are excited to announce the launch of our new product line.",
-        timeSent: "10:15:00 2023/05/07",
+        title: 'Product Launch',
+        from: 'Marketing Department',
+        content: 'We are excited to announce the launch of our new product line.',
+        timeSent: '10:15:00 2023/05/07',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'hjfr',
-        title: "Reminder: Project Deadline",
-        from: "Project Manager",
-        content: "This is a reminder that the project is due on Friday.",
-        timeSent: "16:50:00 2023/05/06",
+        title: 'Reminder: Project Deadline',
+        from: 'Project Manager',
+        content: 'This is a reminder that the project is due on Friday.',
+        timeSent: '16:50:00 2023/05/06',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'aewwe',
-        title: "Welcome Aboard!",
-        from: "HR Department",
-        content: "We are pleased to welcome you to our team.",
-        timeSent: "11:30:00 2023/05/05",
+        title: 'Welcome Aboard!',
+        from: 'HR Department',
+        content: 'We are pleased to welcome you to our team.',
+        timeSent: '11:30:00 2023/05/05',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'ouiy',
-        title: "Password Reset",
-        from: "IT Department",
-        content: "You have requested a password reset. Please follow the link to reset your password.",
-        timeSent: "13:20:00 2023/05/04",
+        title: 'Password Reset',
+        from: 'IT Department',
+        content: 'You have requested a password reset. Please follow the link to reset your password.',
+        timeSent: '13:20:00 2023/05/04',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'vbfs',
-        title: "Feedback Request",
-        from: "Customer Service",
-        content: "We would appreciate your feedback on our service.",
-        timeSent: "09:00:00 2023/05/03",
+        title: 'Feedback Request',
+        from: 'Customer Service',
+        content: 'We would appreciate your feedback on our service.',
+        timeSent: '09:00:00 2023/05/03',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'yrtyu',
-        title: "Travel Itinerary",
-        from: "Travel Agent",
-        content: "Please find attached your travel itinerary for your upcoming trip.",
-        timeSent: "12:10:00 2023/05/02",
+        title: 'Travel Itinerary',
+        from: 'Travel Agent',
+        content: 'Please find attached your travel itinerary for your upcoming trip.',
+        timeSent: '12:10:00 2023/05/02',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
+        isStarred: false,
       },
       {
         id: 'acaz',
-        title: "Job Application Confirmation",
-        from: "HR Department",
-        content: "Thank you for submitting your job application.",
-        timeSent: "15:45:00 2023/05/01",
+        title: 'Job Application Confirmation',
+        from: 'HR Department',
+        content: 'Thank you for submitting your job application.',
+        timeSent: '15:45:00 2023/05/01',
         isRead: false,
         criteria: 'inbox',
-        isStarred: false
-      }
-    ];
+        isStarred: false,
+      },
+    ]
     storageService.saveToStorage(MAIL_KEY, mails)
   }
 }

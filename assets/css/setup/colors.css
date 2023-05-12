@@ -24,7 +24,8 @@ body {
 .label-title.title,
 .label-time.time,
 .inbox.inbox-folder-button,
-.sent.sent-folder-button {
+.sent.sent-folder-button,
+.mail-table .mail-item:hover {
   color: var(--clr1);
   background-color: var(--clr3);
 }

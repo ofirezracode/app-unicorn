@@ -6,11 +6,6 @@
   transition: all 0.3s;
 }
 
-.mail-index ul li {
-  display: flex;
-  flex-direction: row;
-}
-
 .mail-index-buttons {
   grid-row: 1;
   grid-column: 1;

@@ -1,0 +1,13 @@
+.mail-preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20rem 1fr 20rem;
+}
+
+/* .mail-preview .mail-title {
+  width: 20rem;
+}
+
+.mail-preview .mail-content {
+  width: 50rem;
+} */

@@ -1,10 +1,9 @@
-export function MailPreview({ mail }) {
-
-    return (
-        <ul>
-            <li>{mail.title}</li>
-            <li>{mail.content}</li>
-            <li>{mail.timeSent}</li>
-        </ul>
-    )
+export function MailPreview({ mail, onHandleClick }) {
+  return (
+    <ul onClick={() => onHandleClick(mail.id)} className="mail-preview clean-list">
+      <li className="mail-title">{mail.title}</li>
+      <li className="mail-content">{mail.content}</li>
+      <li className="mail-time">{mail.timeSent}</li>
+    </ul>
+  )
 }
