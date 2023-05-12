@@ -14,7 +14,10 @@ export function MailIndex() {
   const [mails, setMails] = useState([])
   const [sort, setSort] = useState(null)
   const [folder, setFolder] = useState('inbox')
+  const [isCollapsed, setIsCollapsed] = useState(false)
+
   const navigate = useNavigate()
+
   useEffect(() => {
     loadMails()
     setSearchParams(filterBy)
@@ -52,17 +55,23 @@ export function MailIndex() {
     setSort(newSort)
     loadMails()
   }
+
   return (
-    <section className="mail-index">
-      <MailFolder onSetFolder={onSetFolder} />
+    <section className={`mail-index mail-index-layout ${isCollapsed ? 'collapsed' : ''}`}>
+      <MailFolder onSetFolder={onSetFolder} folder={folder} isCollapsed={isCollapsed} />
       <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
       <MailSort onSetSort={onSetSort} />
-      <button className="compose" onClick={onCompose}>
-        {' '}
-        compose
-      </button>
-      <h5>unread mails:{countUnread()}</h5>
-      mail app
+      <div className="mail-index-buttons">
+        <button className="flex align-center justify-center compose" onClick={onCompose}>
+          <i className="fa-solid fa-pencil"></i>
+          <p className={`${isCollapsed ? 'collapsed' : ''}`}>Compose</p>
+        </button>
+        <button onClick={() => setIsCollapsed((prev) => !prev)} className="flex align-center collapse">
+          <p className={`${isCollapsed ? 'collapsed' : ''}`}>Collapse</p>
+          <i className={`fa-solid fa-angles-right ${isCollapsed ? '' : 'hidden'}`}></i>
+          <i className={`fa-solid fa-angles-left ${isCollapsed ? 'hidden' : ''}`}></i>
+        </button>
+      </div>
       <MailTable mails={mails} onDeleteMail={onDeleteMail} />
     </section>
   )

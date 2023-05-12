@@ -22,13 +22,13 @@ export function MailSort({ onSetSort }) {
 
         <label className={`flex align-center between label-title ${checkedClass}`} htmlFor="title">
           Title
-          <i class="fa-solid fa-chevron-down"></i>
+          <i className="fa-solid fa-chevron-down"></i>
           <input type="radio" value="title" id="title" name="sort"></input>
         </label>
 
         <label className={`flex align-center between label-time ${checkedClass}`} htmlFor="time">
           Time
-          <i class="fa-solid fa-chevron-down"></i>
+          <i className="fa-solid fa-chevron-down"></i>
           <input type="radio" value="time" id="time" name="sort"></input>
         </label>
       </form>

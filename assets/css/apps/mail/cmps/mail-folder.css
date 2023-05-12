@@ -1,4 +1,31 @@
 .mail-folder {
+  padding: 1.2rem;
+  height: fit-content;
   grid-row: 2 / span 2;
   grid-column: 1;
+  border-top-right-radius: var(--border-radius-s);
+  border-bottom-right-radius: var(--border-radius-s);
+
+  gap: 0.8rem;
+}
+
+.mail-folder button {
+  padding: 1.2rem 1.6rem;
+
+  gap: 1.2rem;
+
+  border-radius: var(--border-radius-l);
+  font-size: 1.6rem;
+
+  transition: all 0.2s;
+}
+
+.mail-folder.collapsed {
+  padding-inline-end: 0;
+}
+
+.mail-folder.collapsed button {
+  border-radius: 0;
+  border-top-left-radius: var(--border-radius-l);
+  border-bottom-left-radius: var(--border-radius-l);
 }

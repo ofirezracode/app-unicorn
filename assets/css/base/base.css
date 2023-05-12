@@ -20,6 +20,15 @@ html {
   --icon-xl: 3.2rem;
 }
 
+#root {
+  height: 100vh;
+}
+
+.app,
+main {
+  height: 100%;
+}
+
 /* Dont stretch my Media */
 img,
 embed,
