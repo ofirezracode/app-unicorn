@@ -20,10 +20,6 @@
   min-height: 4.4rem;
 }
 
-.mail-index.collapsed .mail-index-buttons {
-  grid-template-columns: 1fr;
-}
-
 .mail-index .compose {
   width: 100%;
 }
@@ -46,6 +42,14 @@
 .mail-index .compose p,
 .mail-index .collapse p {
   margin-block-end: 0.3rem;
+}
+
+.mail-index.collapsed .mail-index-buttons {
+  grid-template-columns: 1fr;
+}
+
+.mail-index.collapsed .mail-index-buttons .compose {
+  grid-row: 2;
 }
 
 .mail-index p.collapsed {
