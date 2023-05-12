@@ -19,22 +19,22 @@ export function AppHeader() {
       <nav className="clean-list flex align-center">
         <li>
           <NavLink to="/">
-            <i class="fa-solid fa-house"></i>
+            <i className="fa-solid fa-house"></i>
           </NavLink>
         </li>
         <li>
           <NavLink to="/about">
-            <i class="fa-solid fa-circle-info"></i>
+            <i className="fa-solid fa-circle-info"></i>
           </NavLink>
         </li>
         <li>
           <NavLink to="/mail">
-            <i class="fa-solid fa-envelope"></i>
+            <i className="fa-solid fa-envelope"></i>
           </NavLink>
         </li>
         <li>
           <NavLink to="/note">
-            <i class="fa-solid fa-note-sticky"></i>
+            <i className="fa-solid fa-note-sticky"></i>
           </NavLink>
         </li>
       </nav>

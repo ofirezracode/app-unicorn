@@ -35,7 +35,21 @@
   font-size: 1.6rem;
 }
 
-.mail-compose button {
+.mail-compose-buttons {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1.2rem;
+}
+
+.mail-compose .back-btn {
+  width: 4.3rem;
+  padding: 1.2rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.mail-compose .submit-btn {
   padding: 1.2rem;
   border-radius: var(--border-radius-s);
   font-size: 1.6rem;

@@ -62,6 +62,7 @@ body {
 .mail-index .collapse,
 .mail-compose button,
 .mail-content button,
+.mail-content a,
 .user-msg button {
   color: var(--gray3);
   background-color: var(--clr2);
