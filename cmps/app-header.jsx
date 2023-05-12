@@ -15,19 +15,27 @@ export function AppHeader() {
 
   return (
     <header className="app-header flex between">
-      <Link to="/">🦄</Link>
+      <Link to="/">🦄 Unicorp</Link>
       <nav className="clean-list flex align-center">
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">
+            <i class="fa-solid fa-house"></i>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about">
+            <i class="fa-solid fa-circle-info"></i>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/mail">Mail</NavLink>
+          <NavLink to="/mail">
+            <i class="fa-solid fa-envelope"></i>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/note">Note</NavLink>
+          <NavLink to="/note">
+            <i class="fa-solid fa-note-sticky"></i>
+          </NavLink>
         </li>
       </nav>
     </header>
