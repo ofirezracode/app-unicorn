@@ -6,6 +6,10 @@
   border-radius: var(--border-radius-l);
 }
 
+.new-note-icons {
+  gap: 1.2rem;
+}
+
 .new-note .new-note-input {
   height: 100%;
   width: 100%;

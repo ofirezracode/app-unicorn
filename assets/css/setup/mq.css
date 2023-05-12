@@ -1,0 +1,34 @@
+@media only screen and (max-width: 1600px) {
+  .note-list > ul {
+    columns: 4 auto;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .note-list > ul {
+    columns: 3 auto;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .note-list > ul {
+    columns: 2 auto;
+  }
+  .view {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .note-list > ul {
+    columns: 1 auto;
+  }
+  .view {
+    padding-inline: 1.2rem;
+  }
+  .new-note-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 1.2rem;
+  }
+}
