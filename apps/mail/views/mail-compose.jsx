@@ -84,8 +84,11 @@ export function MailCompose() {
       ({ ...prevMail, [field]: value })
     )
   }
-
+ function onBack() {
+    navigate('/mail')
+  }
   return (
+    <React.Fragment>
     <form className="mail-compose flex column" onSubmit={onSend}>
       <div className="input-container flex align-center">
         <label className="flex center" htmlFor="recipient">
@@ -106,5 +109,10 @@ export function MailCompose() {
         Send <i className="fa-solid fa-paper-plane"></i>
       </button>
     </form>
+    <button className="flex align-center" onClick={onBack}>
+        <i class="fa-solid fa-chevron-left"></i>
+        <p>Back</p>
+      </button>
+    </React.Fragment>
   )
 }

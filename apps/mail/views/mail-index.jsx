@@ -26,7 +26,8 @@ export function MailIndex() {
     function loadMails() {
         console.log(folder)
         mailService.query(filterBy).then((mails) => {
-            mails = mails.filter((mail) => mail.criteria === folder)
+            if (folder==='starred') mails=mails.filter((mail)=>mail.isStarred)
+          else  mails = mails.filter((mail) => mail.criteria === folder)
             if (sort === 'title') mails.sort((a, b) => (a.title > b.title ? -1 : 1))
             if (sort === 'time') mails.sort((a, b) => (a.timeSent > b.timeSent ? -1 : 1))
             // mails.sort((a,b,)=> a.sort>b.sort? -1:1)

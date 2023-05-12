@@ -16,10 +16,16 @@ export function MailContent() {
   function onBack() {
     navigate('/mail')
   }
-  console.log(mail, mailId)
+ function  onReply(){
+  navigate(`/mail/compose/${mail.id}`)
+ }
+ 
   if (!mail) return <p className="mail-content">loading mail </p>
   return (
     <section className="mail-content">
+      <button onClick={onReply} >
+        reply <i class="fa-solid fa-reply"></i>
+        </button>
       <h2>{mail.title}</h2>
       <h3> From: {mail.from}</h3>
       <p>Sent at: {mail.timeSent}</p>
@@ -28,6 +34,10 @@ export function MailContent() {
         <i class="fa-solid fa-chevron-left"></i>
         <p>Back</p>
       </button>
+      
+      <Link to={`/note/${mail.id}`}>
+          save as note
+        </Link>
     </section>
   )
 }
