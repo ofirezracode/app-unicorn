@@ -5,7 +5,7 @@ const { Link, useNavigate } = ReactRouterDOM
 import { mailService } from "../../services/mail.service.js"
 import { MailPreview } from "../cmps/mail-preview.jsx"
 
-export function MailTable({ mails, onDeleteMail }) {
+export function MailTable({ mails, onDeleteMail,onToggelStar }) {
 
     // const [mails, setMails] = useState([])
     const navigate = useNavigate()
@@ -36,6 +36,10 @@ export function MailTable({ mails, onDeleteMail }) {
             {console.log(mails)}
             {mails.map((mail) => (
                 <li key={mail.id} >
+                    <div onClick={()=>onToggelStar(mail.id)}>
+                        {!mail.isStared && <i class="fa-regular fa-star"></i>}
+                        {mail.isStared && <i class="fa-solid fa-star"></i>}
+                    </div>
                     <div>
                         {!mail.isMarked && "⬜"}
                         {mail.isMarked && "✔"}

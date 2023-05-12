@@ -13,7 +13,8 @@ export const mailService = {
   save,
   remove,
   getDefaultFilter,
-  countUnread
+  countUnread,
+  star
 }
 
 function query(filterBy = {}) {
@@ -71,7 +72,8 @@ function getEmptyMail() {
     content: '',
     timeSent: dformat,
     isRead: true,
-    criteria: 'sent'
+    criteria: 'sent',
+    isStared:false
   }
 }
 function save(mail) {
@@ -99,6 +101,14 @@ function countUnread(mails) {
   }
   return count
 }
+function star(mailId){
+  get(mailId)
+  .then(mail=>{
+   mail.isStared=!mail.isStared
+   return mail})
+   
+  asyncStorageService.post(MAIL_KEY,mail)
+}
 
 function _createMails() {
   let mails = storageService.loadFromStorage(MAIL_KEY)
@@ -111,7 +121,8 @@ function _createMails() {
         content: "Please join us for a meeting at 2 PM on Thursday.",
         timeSent: "12:30:00 2023/05/10",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: '2b',
@@ -120,7 +131,8 @@ function _createMails() {
         content: "We are pleased to offer you the position of Senior Software Engineer.",
         timeSent: "09:45:00 2023/05/09",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'fsdg',
@@ -130,6 +142,7 @@ function _createMails() {
         timeSent: "14:20:00 2023/05/08",
         isRead: false,
         criteria: 'inbox',
+        isStared:false,
       },
       {
         id: 'awsr',
@@ -138,7 +151,8 @@ function _createMails() {
         content: "We are excited to announce the launch of our new product line.",
         timeSent: "10:15:00 2023/05/07",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'hjfr',
@@ -147,7 +161,8 @@ function _createMails() {
         content: "This is a reminder that the project is due on Friday.",
         timeSent: "16:50:00 2023/05/06",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'aewwe',
@@ -156,7 +171,8 @@ function _createMails() {
         content: "We are pleased to welcome you to our team.",
         timeSent: "11:30:00 2023/05/05",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'ouiy',
@@ -165,7 +181,8 @@ function _createMails() {
         content: "You have requested a password reset. Please follow the link to reset your password.",
         timeSent: "13:20:00 2023/05/04",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'vbfs',
@@ -174,7 +191,8 @@ function _createMails() {
         content: "We would appreciate your feedback on our service.",
         timeSent: "09:00:00 2023/05/03",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'yrtyu',
@@ -183,7 +201,8 @@ function _createMails() {
         content: "Please find attached your travel itinerary for your upcoming trip.",
         timeSent: "12:10:00 2023/05/02",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       },
       {
         id: 'acaz',
@@ -192,7 +211,8 @@ function _createMails() {
         content: "Thank you for submitting your job application.",
         timeSent: "15:45:00 2023/05/01",
         isRead: false,
-        criteria: 'inbox'
+        criteria: 'inbox',
+        isStared:false
       }
     ];
     storageService.saveToStorage(MAIL_KEY, mails)
