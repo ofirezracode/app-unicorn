@@ -19,14 +19,25 @@ body {
 .note-txt input,
 .note-img input,
 .note-video input,
-.note-todos input {
+.note-todos input,
+.label-none.none,
+.label-title.title,
+.label-time.time,
+.inbox.inbox-folder-button,
+.sent.sent-folder-button {
   color: var(--clr1);
   background-color: var(--clr3);
 }
 
 .new-note,
 .filter-notes,
-.note-preview {
+.note-preview,
+.mail-sort,
+.mail-table,
+.mail-filter .input-container,
+.mail-folder,
+.inbox-folder-button,
+.sent-folder-button {
   color: var(--clr1);
   background-color: var(--clr4);
 }
@@ -37,4 +48,14 @@ body {
 
 .note-todos p.done {
   color: var(--gray2);
+}
+
+.mail-index .compose,
+.mail-index .collapse {
+  color: var(--gray3);
+  background-color: var(--clr2);
+}
+.label-none.none,
+.label-title.title,
+.label-time.time {
 }

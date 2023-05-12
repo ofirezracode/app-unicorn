@@ -1,0 +1,6 @@
+.mail-table {
+  padding: 1.2rem;
+  grid-row: 3;
+  grid-column: 2;
+  border-top-left-radius: var(--border-radius-s);
+}

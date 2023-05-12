@@ -1,0 +1,34 @@
+.mail-filter {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.mail-filter form {
+  gap: 2.4rem;
+}
+
+.mail-filter .input-container {
+  padding: 0.4rem 1.2rem;
+  width: 30rem;
+
+  gap: 1.2rem;
+
+  border-radius: var(--border-radius-s);
+}
+
+.mail-filter .input-container i {
+  padding-block: 0.8rem;
+  font-size: var(--icon-m);
+  cursor: default;
+}
+
+.mail-filter .mail-filter-input {
+  padding: 0.8rem;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+
+  font-size: 1.6rem;
+
+  /* border-radius: var(--border-radius-s); */
+}

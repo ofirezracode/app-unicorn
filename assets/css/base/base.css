@@ -13,10 +13,20 @@ html {
   --border-radius-s: 6px;
   --border-radius-l: 16px;
 
+  --icon-xs: 1.2rem;
   --icon-s: 1.6rem;
   --icon-m: 2rem;
   --icon-l: 2.4rem;
   --icon-xl: 3.2rem;
+}
+
+#root {
+  height: 100vh;
+}
+
+.app,
+main {
+  height: 100%;
 }
 
 /* Dont stretch my Media */

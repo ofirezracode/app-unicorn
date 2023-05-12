@@ -17,3 +17,14 @@
   gap: 1.6rem;
   justify-items: center;
 }
+
+.mail-index-layout {
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 1.2rem;
+}
+
+.mail-index-layout.collapsed {
+  grid-template-columns: 6rem 1fr;
+}

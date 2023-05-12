@@ -6,9 +6,7 @@ export function AppHeader() {
   const [appView, setAppView] = useState('')
 
   useEffect(() => {
-    console.log('location.pathname', location.pathname)
-    // if (location.pathname === '/note' || location.pathname === '/mail') {
-    if (location.pathname === '/note') {
+    if (location.pathname === '/note' || location.pathname === '/mail') {
       setAppView('app-view')
     } else {
       setAppView('')
