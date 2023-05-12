@@ -1,0 +1,54 @@
+.mail-sort {
+  padding: 1.2rem;
+  padding-inline-start: 1.6rem;
+  margin-block-end: 0.8rem;
+
+  font-size: 1.6rem;
+  gap: 1.2rem;
+
+  border-top-left-radius: var(--border-radius-s);
+  border-bottom-left-radius: var(--border-radius-s);
+}
+
+.mail-sort form {
+  gap: 1.6rem;
+}
+
+.mail-sort label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.mail-sort label {
+  min-width: 7.5rem;
+  padding: 0.8rem;
+  padding-block-start: 0.6rem;
+
+  font-size: 1.6rem;
+
+  gap: 0.8rem;
+
+  border: 2px solid var(--clr3);
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+}
+
+.mail-sort i {
+  display: block;
+  margin-block-start: 0.4rem;
+  font-size: var(--icon-xs);
+}
+
+.label-none i,
+.label-title i,
+.label-time i {
+  display: none;
+}
+
+.label-title.title i,
+.label-time.time i {
+  display: inline-block;
+}

@@ -1,64 +1,58 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
 
-
-import { mailService } from "../../services/mail.service.js"
-import { MailPreview } from "../cmps/mail-preview.jsx"
+import { mailService } from '../../services/mail.service.js'
+import { MailPreview } from '../cmps/mail-preview.jsx'
 
 export function MailTable({ mails, onDeleteMail }) {
+  // const [mails, setMails] = useState([])
+  const navigate = useNavigate()
+  // useEffect(() => (
+  //     loadMails()
+  // ), [])
 
-    // const [mails, setMails] = useState([])
-    const navigate = useNavigate()
-    // useEffect(() => (
-    //     loadMails()
-    // ), [])
+  // function loadMails() {
+  //     mailService.query()
+  //         .then(mails => {
+  //             setMails(mails)
+  //         })
+  // }
 
-    // function loadMails() {
-    //     mailService.query()
-    //         .then(mails => {
-    //             setMails(mails)
-    //         })
-    // }
+  function onHandelClick(id) {
+    mailService.setReadMail(id)
+    // ReadMail(id)
+    navigate(`/mail/${id}`)
+  }
 
-    function onHandelClick(id) {
-        mailService.setReadMail(id)
-        // ReadMail(id)
-        navigate(`/mail/${id}`)
-    }
+  // function ReadMail(id){
 
+  // }
 
-    // function ReadMail(id){
-
-    // }
-
-    return (
-        <ul>
-            {console.log(mails)}
-            {mails.map((mail) => (
-                <li key={mail.id} >
-                    <div>
-                        {!mail.isMarked && "⬜"}
-                        {mail.isMarked && "✔"}
-                    </div>
-                    <div onClick={() => onHandelClick(mail.id)}>
-                        <MailPreview mail={mail} />
-                    </div>
-                    <div>
-                        {!mail.isRead && "🔵"}
-                        {mail.isRead && "⚪"}
-                    </div>
-                    <div>
-                        <button onClick={() => onDeleteMail(mail.id)}>🗑</button>
-                    </div>
-                </li>
-
-
-
-            ))}
-        </ul >
-    )
+  return (
+    <ul className="mail-table">
+      {mails.map((mail) => (
+        <li key={mail.id}>
+          <div>
+            {!mail.isMarked && '⬜'}
+            {mail.isMarked && '✔'}
+          </div>
+          <div onClick={() => onHandelClick(mail.id)}>
+            <MailPreview mail={mail} />
+          </div>
+          <div>
+            {!mail.isRead && '🔵'}
+            {mail.isRead && '⚪'}
+          </div>
+          <div>
+            <button onClick={() => onDeleteMail(mail.id)}>🗑</button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
 }
-{/* </li>
+{
+  /* </li>
  <li>
       {!mail.isMarked && '⬜'}
  {mail.isMarked && '✔'}
@@ -74,4 +68,5 @@ export function MailTable({ mails, onDeleteMail }) {
 
     <li>
      <button onClick={()=>console.log('hey')}>🗑</button>
-     </li> */}
+     </li> */
+}

@@ -1,30 +1,37 @@
+const { useState } = React
+
 export function MailSort({ onSetSort }) {
+  function handleChange({ target }) {}
+  const [checkedClass, setCheckedClass] = useState('none')
 
-    function handleChange({ target }) {
+  function onChange(e) {
+    // if(noneRef.current.checked) noneRef.current.classList.add('checked')
+    console.log('e.target', e.target)
+    setCheckedClass(e.target.id)
+    onSetSort(e)
+  }
 
-    }
-    return (
-        <section>
-            <label htmlFor="sort">Sort by: </label>
-            <form id="sort" onChange={onSetSort}>
+  return (
+    <section className="mail-sort flex align-center">
+      <p>Sort</p>
+      <form className="flex" onChange={(e) => onChange(e)}>
+        <label className={`flex align-center between label-none ${checkedClass}`} htmlFor="none">
+          None
+          <input type="radio" value="" id="none" name="sort"></input>
+        </label>
 
-                <label htmlFor="none">none</label>
-                <input type="radio" value="" id="none" name="sort"></input>
+        <label className={`flex align-center between label-title ${checkedClass}`} htmlFor="title">
+          Title
+          <i class="fa-solid fa-chevron-down"></i>
+          <input type="radio" value="title" id="title" name="sort"></input>
+        </label>
 
-                <label htmlFor="title">Title</label>
-                <input type="radio" value="title" id="title" name="sort"></input>
-                
-                <label htmlFor="time">Time sent</label>
-                <input type="radio" value="time" id="time" name="sort"></input>
-
-
-
-            </form>
-            {/* <select id="sort" onChange={onSetSort}>
-            <option value=''>None</option>
-            <option value="title">Title</option>
-            <option value="time"> Time sent</option>
-        </select> */}
-        </section>
-    )
+        <label className={`flex align-center between label-time ${checkedClass}`} htmlFor="time">
+          Time
+          <i class="fa-solid fa-chevron-down"></i>
+          <input type="radio" value="time" id="time" name="sort"></input>
+        </label>
+      </form>
+    </section>
+  )
 }
