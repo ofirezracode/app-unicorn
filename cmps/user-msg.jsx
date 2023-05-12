@@ -24,7 +24,9 @@ export function UserMsg() {
   return (
     <div className={'user-msg ' + msg.type}>
       <p>{msg.txt}</p>
-      <button onClick={onCloseMsg}>X</button>
+      <button onClick={onCloseMsg}>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
   )
 }

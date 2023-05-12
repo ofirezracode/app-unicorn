@@ -28,7 +28,8 @@ body {
 .starred.starred-folder-button,
 .mail-table .mail-item:hover,
 .mail-compose .input-container input,
-.mail-compose .input-container textarea {
+.mail-compose .input-container textarea,
+.user-msg {
   color: var(--clr1);
   background-color: var(--clr3);
 }
@@ -58,7 +59,8 @@ body {
 .mail-index .compose,
 .mail-index .collapse,
 .mail-compose button,
-.mail-content button {
+.mail-content button,
+.user-msg button {
   color: var(--gray3);
   background-color: var(--clr2);
 }
