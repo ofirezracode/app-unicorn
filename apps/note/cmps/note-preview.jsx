@@ -9,19 +9,15 @@ import { NoteVideo } from './dynamic-previews/note-video.jsx'
 export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDuplicateNote }) {
   const [isEditable, setIsEditable] = useState(false)
 
-  const [noteStyle, setNoteStyle] = useState(
-    note.style
-      ? { ...note.style }
-      : {
-          backgroundColor: '#ffe6c7',
-        }
-  )
+  const [noteStyle, setNoteStyle] = useState(note.style ? { ...note.style } : { backgroundColor: '#ffe6c7' })
+  const [noteStyleChanged, setNoteStyleChanged] = useState(false)
 
   useEffect(() => {
     const debounce = setTimeout(() => {
+      if (!noteStyleChanged) return
       const newNote = { ...note, style: noteStyle }
-      console.log('noteStyle', noteStyle)
       onEditNote(newNote)
+      setNoteStyleChanged(false)
     }, 500)
     return () => {
       clearTimeout(debounce)
@@ -32,6 +28,7 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
     const newColor = e.target.value
     const style = { backgroundColor: newColor }
     setNoteStyle((prevStyle) => ({ ...prevStyle, ...style }))
+    setNoteStyleChanged(true)
   }
 
   function onToggleEditable() {

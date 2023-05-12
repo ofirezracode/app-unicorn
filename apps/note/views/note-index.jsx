@@ -36,7 +36,7 @@ export function NoteIndex() {
   }
 
   function onEditNote(note) {
-    console.log('edit note')
+    console.log('onEditNote')
     noteService
       .save(note)
       .then(loadNotes)

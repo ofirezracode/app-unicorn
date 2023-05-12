@@ -8,8 +8,13 @@ export function MailPreview({ mail, onHandleClick, onToggleStar, onDeleteMail })
         {mail.isStarred && <i className="fa-solid fa-star"></i>}
       </button>
       <ul onClick={() => onHandleClick(mail.id)} className="mail-preview clean-list">
-       <li className="mail-preview-title"> < TextLine text={mail.title} length={3}/></li>
-        <li className="mail-preview-content">< TextLine text={mail.content} length={10}/></li>
+        <li className="mail-preview-title">
+          {' '}
+          <TextLine text={mail.title} length={30} />
+        </li>
+        <li className="mail-preview-content">
+          <TextLine text={mail.content} length={90} />
+        </li>
         <li className="mail-preview-time">{mail.timeSent}</li>
       </ul>
       <button onClick={() => onDeleteMail(mail.id)}>
