@@ -1,0 +1,29 @@
+.book-add {
+  margin-block-end: 3.6rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.book-add h2 {
+  font-size: 2.4rem;
+  margin-block-end: 1.8rem;
+}
+
+.book-add label {
+  margin-block-end: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.book-add input {
+  margin-block-end: 1.6rem;
+  padding: 1.2rem;
+  width: 50rem;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 1.6rem;
+  font-family: inherit;
+}

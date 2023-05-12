@@ -1,0 +1,52 @@
+.book-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.book-preview img {
+  display: block;
+  width: 20rem;
+}
+
+.book-preview-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.book-preview h2,
+.book-preview h3,
+.book-preview p {
+  padding-inline-start: 1.2rem;
+}
+
+.book-preview h2 {
+  padding-block-start: 1.2rem;
+  font-size: 2.2rem;
+}
+
+.book-preview h3 {
+  margin-block-end: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.book-preview .book-price {
+  padding: 1.2rem 1.2rem 0 0;
+  grid-row: span 2;
+  font-size: 1.6rem;
+  text-align: end;
+}
+
+.book-preview .book-authors {
+  font-size: 1.6rem;
+}
+
+.book-preview-content .buttons {
+  margin-block-start: auto;
+  margin-block-end: 2.4rem;
+  justify-content: space-around;
+}
+
+.book-preview-content .buttons button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+}

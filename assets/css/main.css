@@ -1,3 +1,31 @@
+/* Book */
+/* Setup */
+@import './apps/book/assets/style/setup/colors.css';
+@import './apps/book/assets/style/setup/typography.css';
+
+/* Base */
+@import './apps/book/assets/style/base/base.css';
+@import './apps/book/assets/style/base/helpers.css';
+@import './apps/book/assets/style/base/layout.css';
+
+/* Views */
+@import './apps/book/assets/style/views/home.css';
+@import './apps/book/assets/style/views/book-index.css';
+@import './apps/book/assets/style/views/about-us.css';
+@import './apps/book/assets/style/views/book-details.css';
+@import './apps/book/assets/style/views/book-edit.css';
+@import './apps/book/assets/style/views/book-add.css';
+
+/* Components */
+@import './apps/book/assets/style/cmps/add-review.css';
+@import './apps/book/assets/style/cmps/book-add-row.css';
+@import './apps/book/assets/style/cmps/book-index/book-index.css';
+@import './apps/book/assets/style/cmps/book-index/book-filter.css';
+@import './apps/book/assets/style/cmps/book-index/book-list.css';
+@import './apps/book/assets/style/cmps/book-index/book-preview.css';
+@import './apps/book/assets/style/cmps/book-reviews/book-reviews.css';
+@import './apps/book/assets/style/cmps/book-reviews/book-review.css';
+
 /* Setup */
 @import './setup/colors.css';
 @import './setup/typography.css';
@@ -42,6 +70,8 @@
 @import './apps/mail/cmps/mail-preview.css';
 @import './apps/mail/cmps/mail-compose.css';
 @import './apps/mail/cmps/mail-content.css';
+
+
 
 /* MQ */
 @import './setup/mq.css';

@@ -1,0 +1,12 @@
+.book-reviews {
+  padding: 1.2rem;
+  border-radius: 6px;
+}
+
+.book-reviews li {
+  margin-block-end: 1.2rem;
+}
+
+.book-reviews li:last-child {
+  margin-block-end: 0;
+}

@@ -1,0 +1,68 @@
+.book-details-buttons button,
+.book-details-buttons a {
+  padding: 1.2rem;
+  margin-inline-end: 1.2rem;
+  margin-block-end: 2.4rem;
+
+  font-size: 1.6rem;
+  font-weight: bold;
+
+  border-radius: 6px;
+}
+
+.book-details-container {
+  display: grid;
+  margin-block-end: 1.6rem;
+
+  grid-template-columns: 1fr 1fr;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.book-details-container img {
+  display: block;
+  width: 100%;
+}
+
+.book-title-container {
+  gap: 2.4rem;
+}
+
+.book-details-info {
+  padding: 2.4rem;
+}
+
+.book-details-container h2 {
+  font-size: 3.6rem;
+}
+
+.book-details-info > p {
+  margin-block-end: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.book-details-container .book-price {
+  font-size: 2.4rem;
+  text-align: end;
+}
+
+.book-details .tag {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  border-radius: 15px;
+  margin-inline-end: 0.8rem;
+}
+
+.book-details-tags {
+  margin-block-end: 1.2rem;
+}
+
+.review-button {
+  display: inline-block;
+  margin-block-start: auto;
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+
+  border-radius: 6px;
+}

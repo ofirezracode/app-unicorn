@@ -1,0 +1,9 @@
+.view {
+  max-width: 110rem;
+  margin: 7.6rem auto;
+  padding-inline: 4.8rem;
+}
+
+.book-index.view {
+  max-width: 140rem;
+}

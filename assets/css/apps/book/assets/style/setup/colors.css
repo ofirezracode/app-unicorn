@@ -1,0 +1,79 @@
+:root {
+  --clr1: #3c486b;
+  --clr2: #f0f0f0;
+  --clr3: #f9d949;
+  --clr4: #f45050;
+  --clr5: #65a30d;
+}
+
+body {
+  background-color: var(--clr1);
+  color: var(--clr2);
+}
+
+.app-header,
+.book-list .book-item,
+.book-details-container,
+.book-review {
+  color: var(--clr1);
+  background-color: var(--clr2);
+}
+
+.book-preview-content .buttons button {
+  background-color: var(--clr3);
+  color: var(--clr4);
+}
+
+.home a,
+.book-filter,
+.book-edit,
+.add-review,
+.book-details button,
+.book-details-buttons a,
+.user-msg button,
+.review-button,
+.book-add .book-add-row {
+  color: var(--clr1);
+  background-color: var(--clr3);
+}
+
+.book-filter input,
+.book-edit input {
+  color: var(--clr3);
+  background-color: var(--clr1);
+}
+
+.book-filter button,
+.book-edit button,
+.book-details .tag,
+.add-review button,
+.add-book {
+  color: var(--clr1);
+  background-color: var(--clr4);
+}
+
+.book-details-container .book-price.high {
+  color: var(--clr4);
+}
+
+.book-details-container .book-price.low,
+a.active {
+  color: var(--clr5);
+}
+
+.user-msg.error button {
+  color: var(--clr4);
+  background-color: var(--clr1);
+}
+
+.user-msg {
+  color: var(--clr1);
+}
+
+.user-msg.success {
+  background-color: var(--clr2);
+}
+
+.user-msg.error {
+  background-color: var(--clr4);
+}

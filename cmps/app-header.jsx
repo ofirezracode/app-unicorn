@@ -37,6 +37,11 @@ export function AppHeader() {
             <i class="fa-solid fa-note-sticky"></i>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/books">
+          <i class="fa-solid fa-book"></i>
+          </NavLink>
+        </li>
       </nav>
     </header>
   )

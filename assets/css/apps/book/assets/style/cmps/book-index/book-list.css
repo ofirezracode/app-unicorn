@@ -1,0 +1,15 @@
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 40rem);
+  gap: 2.4rem;
+  /* justify-items: center; */
+}
+
+.book-list .book-item {
+  /* padding: 1.2rem; */
+  width: 40rem;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+}

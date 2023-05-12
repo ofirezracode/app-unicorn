@@ -1,0 +1,23 @@
+.book-add-row {
+  padding: 1.2rem;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 4.8rem;
+
+  font-size: 1.4rem;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.book-add-row .add-book-button {
+  width: fit-content;
+
+  grid-column: 2;
+  justify-self: end;
+  padding: 0.7rem 1.2rem;
+
+  font-weight: bold;
+
+  border-radius: 6px;
+}
