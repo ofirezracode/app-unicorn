@@ -1,4 +1,5 @@
-import { mailService } from '../services/mail.service.js'
+import { mailService } from "../services/mail.service.js"
+import { noteService } from "../../note/services/note.service.js"
 
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect, useRef } = React
@@ -18,14 +19,42 @@ export function MailCompose() {
   const navigate = useNavigate()
   const params = useParams()
 
-  useEffect(() => {
-    if (params.mailId) loadMail()
-    setNewMail(() => ({ ...mailService.getEmptyMail() }))
-  }, [])
+    useEffect(() => {
+        if (params.noteId) loadNote()
+        setNewMail(() => ({ ...mailService.getEmptyMail() }))
 
-  function loadMail() {
-    mailService.get(params.mailId).then(setNewMail)
-  }
+    }, [])
+
+    function loadNote() {
+        noteService.get(params.noteId)
+            .then(note => {
+                console.log(note)
+                const newMail = {
+                    title: note.info.title,
+                    content: getcontent(note)
+                }
+                setNewMail(newMail)
+            })
+
+    }
+    function getcontent(note) {
+        let content = ''
+        switch (note.type) {
+            case 'txt':
+                content = note.info.txt
+                break
+            case 'img':
+                content ='Check out this photo I found online\n '+ note.info.url
+                break
+            case 'video':
+                content ='Check out this cool video!\n '+ `https://www.youtube.com/watch?v=${note.info.videoId}`
+                break
+            case 'todos':
+                content ='Todos: '+ note.info.todos.map(todo => todo.txt).join(', ')
+                break
+        }
+        return content
+    }
 
   function onSend(ev) {
     ev.preventDefault()
