@@ -13,8 +13,8 @@ export const mailService = {
   save,
   remove,
   getDefaultFilter,
-  countUnread,
-  star,
+  countMailType,
+  star
 }
 
 function query(filterBy = {}) {
@@ -87,10 +87,21 @@ function getDefaultFilter(searchParams = { get: () => {} }) {
     isRead: searchParams.get('isRead') || '',
   }
 }
-function countUnread(mails) {
+function countMailType(mails, prop) {
+  mails=storageService.loadFromStorage(MAIL_KEY)
   if (!mails || mails.length === 0) return
-  const count = mails.reduce((acc, mail) => (acc += !mail.isRead), 0)
-  // const count = mails.reduce((acc, mail) => acc += mail[prop], 0)
+  let count=0
+  switch(prop){
+    case 'criteria':
+       count =mails.reduce((acc,mail)=> acc+= mail[prop]==='sent'?1:0,0)
+      break
+  case 'isRead':
+    count = mails.reduce((acc, mail) => acc += !mail[prop], 0)
+    break
+  // const count = mails.reduce((acc, mail) => acc += !mail.isRead, 0)
+  default:
+   count = mails.reduce((acc, mail) => acc += mail[prop], 0)
+}
   return count
 }
 function star(mailId) {

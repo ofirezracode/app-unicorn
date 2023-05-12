@@ -20,7 +20,6 @@ export function MailCompose() {
     const params = useParams()
 
     useEffect(() => {
-        console.log(params);
         if (params.mailId) loadMail()
         setNewMail(() => ({ ...mailService.getEmptyMail() }))
     }, [])

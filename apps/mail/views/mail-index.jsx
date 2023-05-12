@@ -63,7 +63,7 @@ export function MailIndex() {
 
     return (
         <section className={`mail-index mail-index-layout ${isCollapsed ? 'collapsed' : ''}`}>
-            <MailFolder onSetFolder={onSetFolder} folder={folder} isCollapsed={isCollapsed} />
+            <MailFolder onSetFolder={onSetFolder} folder={folder} isCollapsed={isCollapsed} mails={mails} />
             <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
             <MailSort onSetSort={onSetSort} />
             <div className="mail-index-buttons">
