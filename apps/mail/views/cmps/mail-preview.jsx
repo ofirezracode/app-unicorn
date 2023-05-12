@@ -10,9 +10,9 @@ export function MailPreview({ mail, onHandleClick, onToggleStar, onDeleteMail })
         <li className="mail-content">{mail.content}</li>
         <li className="mail-time">{mail.timeSent}</li>
       </ul>
-        <button onClick={() => onDeleteMail(mail.id)}>
-          <i className="fa-solid fa-trash"></i>
-        </button>
+      <button onClick={() => onDeleteMail(mail.id)}>
+        <i className="fa-solid fa-trash"></i>
+      </button>
     </React.Fragment>
   )
 }

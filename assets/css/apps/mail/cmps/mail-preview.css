@@ -1,7 +1,7 @@
 .mail-preview {
   width: 100%;
   display: grid;
-  grid-template-columns: 20rem 1fr 20rem;
+  grid-template-columns: 20rem 1fr 15rem;
 }
 
 /* .mail-preview .mail-title {

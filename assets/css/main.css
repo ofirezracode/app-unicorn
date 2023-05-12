@@ -40,6 +40,8 @@
 @import './apps/mail/cmps/mail-sort.css';
 @import './apps/mail/cmps/mail-table.css';
 @import './apps/mail/cmps/mail-preview.css';
+@import './apps/mail/cmps/mail-compose.css';
+@import './apps/mail/cmps/mail-content.css';
 
 /* MQ */
 @import './setup/mq.css';

@@ -1,0 +1,43 @@
+.mail-compose {
+  padding: 2.4rem;
+  width: 50rem;
+  margin: 4.8rem auto;
+
+  gap: 1.2rem;
+  border-radius: var(--border-radius-s);
+}
+
+.mail-compose .input-container {
+  gap: 1.2rem;
+}
+
+.mail-compose .input-container label {
+  min-width: 2.4rem;
+}
+
+.mail-compose .input-container input {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+}
+
+.mail-compose .input-container textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--border-radius-s);
+  font-family: inherit;
+  font-size: 1.6rem;
+  border: none;
+}
+
+.mail-compose i {
+  font-size: 1.6rem;
+}
+
+.mail-compose button {
+  padding: 1.2rem;
+  border-radius: var(--border-radius-s);
+  font-size: 1.6rem;
+  font-weight: bold;
+}

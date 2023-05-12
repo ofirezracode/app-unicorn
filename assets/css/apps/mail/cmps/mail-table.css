@@ -19,3 +19,7 @@
 .mail-table .mail-item:first-child {
   border-top-left-radius: var(--border-radius-s);
 }
+
+.mail-table .mail-item button {
+  background-color: inherit;
+}

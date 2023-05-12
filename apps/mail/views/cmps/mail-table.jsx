@@ -27,14 +27,12 @@ export function MailTable({ mails, onDeleteMail, onToggleStar }) {
   // function ReadMail(id){
 
   // }
-// console.log(mailService.countUnread(mails))
+  // console.log(mailService.countUnread(mails))
   return (
     <ul className="mail-table clean-list flex column">
       {mails.map((mail) => (
         <li className={`mail-item ${mail.isRead ? 'read-mail' : ''} flex`} key={mail.id}>
-          
           <MailPreview mail={mail} onDeleteMail={onDeleteMail} onHandleClick={onHandleClick} onToggleStar={onToggleStar} />
-          
         </li>
       ))}
     </ul>
