@@ -74,46 +74,48 @@ export function NewNote({ onAddNote }) {
   return (
     <form onSubmit={onSubmit} className="new-note new-note-layout">
       <input className="new-note-input" placeholder={placeholderText} onChange={handleInputChange} value={inputValue} />
-      <span
-        className="new-note-icon type-active"
-        ref={txtRef}
-        onClick={() => {
-          onNoteTypeClick(0)
-        }}
-      >
-        <i className="fa-regular fa-comment"></i>
-        <i className="fa-solid fa-comment"></i>
-      </span>
-      <span
-        className="new-note-icon"
-        ref={imgRef}
-        onClick={() => {
-          onNoteTypeClick(1)
-        }}
-      >
-        <i className="fa-regular fa-image"></i>
-        <i className="fa-solid fa-image"></i>
-      </span>
-      <span
-        className="new-note-icon"
-        ref={videoRef}
-        onClick={() => {
-          onNoteTypeClick(2)
-        }}
-      >
-        <i className="fa-regular fa-file-video"></i>
-        <i className="fa-solid fa-file-video"></i>
-      </span>
-      <span
-        className="new-note-icon"
-        ref={todosRef}
-        onClick={() => {
-          onNoteTypeClick(3)
-        }}
-      >
-        <i className="fa-regular fa-rectangle-list"></i>
-        <i className="fa-solid fa-rectangle-list"></i>
-      </span>
+      <div className="new-note-icons flex align-center">
+        <span
+          className="new-note-icon type-active"
+          ref={txtRef}
+          onClick={() => {
+            onNoteTypeClick(0)
+          }}
+        >
+          <i className="fa-regular fa-comment"></i>
+          <i className="fa-solid fa-comment"></i>
+        </span>
+        <span
+          className="new-note-icon"
+          ref={imgRef}
+          onClick={() => {
+            onNoteTypeClick(1)
+          }}
+        >
+          <i className="fa-regular fa-image"></i>
+          <i className="fa-solid fa-image"></i>
+        </span>
+        <span
+          className="new-note-icon"
+          ref={videoRef}
+          onClick={() => {
+            onNoteTypeClick(2)
+          }}
+        >
+          <i className="fa-regular fa-file-video"></i>
+          <i className="fa-solid fa-file-video"></i>
+        </span>
+        <span
+          className="new-note-icon"
+          ref={todosRef}
+          onClick={() => {
+            onNoteTypeClick(3)
+          }}
+        >
+          <i className="fa-regular fa-rectangle-list"></i>
+          <i className="fa-solid fa-rectangle-list"></i>
+        </span>
+      </div>
     </form>
   )
 }

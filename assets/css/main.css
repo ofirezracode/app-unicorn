@@ -39,3 +39,6 @@
 @import './apps/mail/cmps/mail-folder.css';
 @import './apps/mail/cmps/mail-sort.css';
 @import './apps/mail/cmps/mail-table.css';
+
+/* MQ */
+@import './setup/mq.css';
