@@ -52,12 +52,12 @@ function setReadMail(mailId) {
   let mails = storageService.loadFromStorage(MAIL_KEY)
   // console.log(mail)
 }
-Number.prototype.padLeft = function(base,chr){
-  var  len = (String(base || 10).length - String(this).length)+1;
-  return len > 0? new Array(len).join(chr || '0')+this : this;
+Number.prototype.padLeft = function (base, chr) {
+  var len = (String(base || 10).length - String(this).length) + 1;
+  return len > 0 ? new Array(len).join(chr || '0') + this : this;
 }
 function getEmptyMail() {
-  
+
   let d = new Date,
     dformat = [d.getHours().padLeft(),
     d.getMinutes().padLeft(),
@@ -73,11 +73,15 @@ function getEmptyMail() {
     timeSent: dformat,
     isRead: true,
     criteria: 'sent',
-    isStared:false
+    isStarred: false
   }
 }
 function save(mail) {
-  return asyncStorageService.post(MAIL_KEY, mail)
+  if (mail.id) {
+    return asyncStorageService.put(MAIL_KEY, mail)
+  } else {
+    return asyncStorageService.post(MAIL_KEY, mail)
+  }
 }
 
 function remove(mailId) {
@@ -91,23 +95,19 @@ function getDefaultFilter(searchParams = { get: () => { } }) {
     isRead: searchParams.get('isRead') || ''
   }
 }
-function countUnread(mails) {
+function countMailType(mails, prop) {
   if (!mails || mails.length === 0) return
-
-  let count = 0
-  for (let i = 0; i < mails.length; i++) {
-      console.log()
-      if (!mails[i].isRead) count++
-  }
+  // const count = mails.reduce((acc, mail) => acc += !mail.isRead, 0)
+  const count = mails.reduce((acc, mail) => acc += mail[prop], 0)
   return count
 }
-function star(mailId){
-  get(mailId)
-  .then(mail=>{
-   mail.isStared=!mail.isStared
-   return mail})
-   
-  asyncStorageService.post(MAIL_KEY,mail)
+function star(mailId) {
+  return get(mailId)
+    .then(mail => {
+      mail.isStarred = !mail.isStarred
+      return save(mail)
+    })
+
 }
 
 function _createMails() {
@@ -122,7 +122,7 @@ function _createMails() {
         timeSent: "12:30:00 2023/05/10",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: '2b',
@@ -132,7 +132,7 @@ function _createMails() {
         timeSent: "09:45:00 2023/05/09",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'fsdg',
@@ -142,7 +142,7 @@ function _createMails() {
         timeSent: "14:20:00 2023/05/08",
         isRead: false,
         criteria: 'inbox',
-        isStared:false,
+        isStarred: false,
       },
       {
         id: 'awsr',
@@ -152,7 +152,7 @@ function _createMails() {
         timeSent: "10:15:00 2023/05/07",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'hjfr',
@@ -162,7 +162,7 @@ function _createMails() {
         timeSent: "16:50:00 2023/05/06",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'aewwe',
@@ -172,7 +172,7 @@ function _createMails() {
         timeSent: "11:30:00 2023/05/05",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'ouiy',
@@ -182,7 +182,7 @@ function _createMails() {
         timeSent: "13:20:00 2023/05/04",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'vbfs',
@@ -192,7 +192,7 @@ function _createMails() {
         timeSent: "09:00:00 2023/05/03",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'yrtyu',
@@ -202,7 +202,7 @@ function _createMails() {
         timeSent: "12:10:00 2023/05/02",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       },
       {
         id: 'acaz',
@@ -212,7 +212,7 @@ function _createMails() {
         timeSent: "15:45:00 2023/05/01",
         isRead: false,
         criteria: 'inbox',
-        isStared:false
+        isStarred: false
       }
     ];
     storageService.saveToStorage(MAIL_KEY, mails)

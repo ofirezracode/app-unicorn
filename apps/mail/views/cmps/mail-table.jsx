@@ -4,13 +4,13 @@ const { Link, useNavigate } = ReactRouterDOM
 import { mailService } from '../../services/mail.service.js'
 import { MailPreview } from '../cmps/mail-preview.jsx'
 
-export function MailTable({ mails, onDeleteMail,onToggelStar }) {
+export function MailTable({ mails, onDeleteMail, onToggleStar }) {
 
-    // const [mails, setMails] = useState([])
-    const navigate = useNavigate()
-    // useEffect(() => (
-    //     loadMails()
-    // ), [])
+  // const [mails, setMails] = useState([])
+  const navigate = useNavigate()
+  // useEffect(() => (
+  //     loadMails()
+  // ), [])
 
   // function loadMails() {
   //     mailService.query()
@@ -19,7 +19,7 @@ export function MailTable({ mails, onDeleteMail,onToggelStar }) {
   //         })
   // }
 
-  function onHandelClick(id) {
+  function onHandleClick(id) {
     mailService.setReadMail(id)
     // ReadMail(id)
     navigate(`/mail/${id}`)
@@ -28,25 +28,17 @@ export function MailTable({ mails, onDeleteMail,onToggelStar }) {
   // function ReadMail(id){
 
   // }
-
+console.log(mailService.countUnread(mails))
   return (
     <ul className="mail-table">
       {mails.map((mail) => (
-        <li key={mail.id}>
-                    <div onClick={()=>onToggelStar(mail.id)}>
-                        {!mail.isStared && <i class="fa-regular fa-star"></i>}
-                        {mail.isStared && <i class="fa-solid fa-star"></i>}
-                    </div>
-          <div>
-            {!mail.isMarked && '⬜'}
-            {mail.isMarked && '✔'}
+        <li className={mail.isRead ? 'read-mail' : ''} key={mail.id}>
+          <div onClick={() => onToggleStar(mail.id)}>
+            {!mail.isStarred && <i className="fa-regular fa-star"></i>}
+            {mail.isStarred && <i className="fa-solid fa-star"></i>}
           </div>
-          <div onClick={() => onHandelClick(mail.id)}>
+          <div onClick={() => onHandleClick(mail.id)}>
             <MailPreview mail={mail} />
-          </div>
-          <div>
-            {!mail.isRead && '🔵'}
-            {mail.isRead && '⚪'}
           </div>
           <div>
             <button onClick={() => onDeleteMail(mail.id)}>🗑</button>
@@ -63,7 +55,7 @@ export function MailTable({ mails, onDeleteMail,onToggelStar }) {
  {mail.isMarked && '✔'}
  </li>
 
- <li key={mail.id}  onClick={() => onHandelClick(mail.id)}  >  
+ <li key={mail.id}  onClick={() => onHandleClick(mail.id)}  >  
      <MailPreview mail={mail} />
      </li>
 
