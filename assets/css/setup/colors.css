@@ -25,6 +25,7 @@ body {
 .label-time.time,
 .inbox.inbox-folder-button,
 .sent.sent-folder-button,
+.starred.starred-folder-button,
 .mail-table .mail-item:hover {
   color: var(--clr1);
   background-color: var(--clr3);
@@ -37,8 +38,7 @@ body {
 .mail-table,
 .mail-filter .input-container,
 .mail-folder,
-.inbox-folder-button,
-.sent-folder-button {
+.mail-folder button {
   color: var(--clr1);
   background-color: var(--clr4);
 }

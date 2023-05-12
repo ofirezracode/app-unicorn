@@ -4,6 +4,7 @@
 }
 
 .mail-filter form {
+  align-self: end;
   gap: 2.4rem;
 }
 

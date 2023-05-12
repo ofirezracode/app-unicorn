@@ -10,7 +10,7 @@ export function MailFolder({ onSetFolder, folder, isCollapsed }) {
         <p className={`${isCollapsed ? 'collapsed' : ''}`}>Sent</p>
       </button>
       <button className={`${folder} starred-folder-button flex align-center`} onClick={() => onSetFolder('starred')}>
-        <i className="fa-solid fa-paper-plane"></i>
+        <i className="fa-solid fa-star"></i>
         <p className={`${isCollapsed ? 'collapsed' : ''}`}>Starred</p>
       </button>
     </section>
