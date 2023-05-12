@@ -41,7 +41,8 @@ body {
 .mail-filter .input-container,
 .mail-folder,
 .mail-folder button,
-.mail-compose {
+.mail-compose,
+.mail-content {
   color: var(--clr1);
   background-color: var(--clr4);
 }
@@ -56,7 +57,8 @@ body {
 
 .mail-index .compose,
 .mail-index .collapse,
-.mail-compose button {
+.mail-compose button,
+.mail-content button {
   color: var(--gray3);
   background-color: var(--clr2);
 }

@@ -35,6 +35,7 @@ export function MailTable({ mails, onDeleteMail, onToggleStar }) {
           <MailPreview mail={mail} onDeleteMail={onDeleteMail} onHandleClick={onHandleClick} onToggleStar={onToggleStar} />
         </li>
       ))}
+      {mails.length === 0 && <li className="no-mails">Nothing to see here...</li>}
     </ul>
   )
 }
