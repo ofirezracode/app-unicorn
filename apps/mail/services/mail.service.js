@@ -3,6 +3,11 @@ import { asyncStorageService } from '../../../services/async-storage.service.js'
 import { storageService } from '../../../services/storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
+const loggedinUser = {
+  email: 'charlie_the _unicorn@unicorp.com',
+  fullname: 'Charlie Unicorn'
+ }
+
 const MAIL_KEY = 'mailDB'
 _createMails()
 export const mailService = {
@@ -14,7 +19,8 @@ export const mailService = {
   remove,
   getDefaultFilter,
   countMailType,
-  star
+  star,
+  loggedinUser
 }
 
 function query(filterBy = {}) {
@@ -61,7 +67,7 @@ function getEmptyMail() {
   return {
     id: '',
     title: '',
-    from: '',
+    from: 'charlie_the _unicorn@unicorp.com',
     to:'',
     content: '',
     timeSent: dformat,
@@ -119,7 +125,7 @@ function _createMails() {
       {
         id: '1a',
         title: 'Meeting Invitation',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'John Smith',
         content: 'Please join us for a meeting at 2 PM on Thursday.',
         timeSent: '12:30:00 2023/05/10',
@@ -130,7 +136,7 @@ function _createMails() {
       {
         id: '2b',
         title: 'New Job Offer',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'HR Department',
         content: 'We are pleased to offer you the position of Senior Software Engineer.',
         timeSent: '09:45:00 2023/05/09',
@@ -141,7 +147,7 @@ function _createMails() {
       {
         id: 'fsdg',
         title: 'Vacation Request',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'Jane Doe',
         content: 'I would like to request vacation time from June 1st to June 15th.',
         timeSent: '14:20:00 2023/05/08',
@@ -152,7 +158,7 @@ function _createMails() {
       {
         id: 'awsr',
         title: 'Product Launch',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'Marketing Department',
         content: 'We are excited to announce the launch of our new product line.',
         timeSent: '10:15:00 2023/05/07',
@@ -163,7 +169,7 @@ function _createMails() {
       {
         id: 'hjfr',
         title: 'Reminder: Project Deadline',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'Project Manager',
         content: 'This is a reminder that the project is due on Friday.',
         timeSent: '16:50:00 2023/05/06',
@@ -174,7 +180,7 @@ function _createMails() {
       {
         id: 'aewwe',
         title: 'Welcome Aboard!',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'HR Department',
         content: 'We are pleased to welcome you to our team.',
         timeSent: '11:30:00 2023/05/05',
@@ -185,7 +191,7 @@ function _createMails() {
       {
         id: 'ouiy',
         title: 'Password Reset',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'IT Department',
         content: 'You have requested a password reset. Please follow the link to reset your password.',
         timeSent: '13:20:00 2023/05/04',
@@ -196,7 +202,7 @@ function _createMails() {
       {
         id: 'vbfs',
         title: 'Feedback Request',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'Customer Service',
         content: 'We would appreciate your feedback on our service.',
         timeSent: '09:00:00 2023/05/03',
@@ -207,7 +213,7 @@ function _createMails() {
       {
         id: 'yrtyu',
         title: 'Travel Itinerary',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'Travel Agent',
         content: 'Please find attached your travel itinerary for your upcoming trip.',
         timeSent: '12:10:00 2023/05/02',
@@ -218,7 +224,7 @@ function _createMails() {
       {
         id: 'acaz',
         title: 'Job Application Confirmation',
-        to:'user@mail.com',
+        to:'charlie_the _unicorn@unicorp.com',
         from: 'HR Department',
         content: 'Thank you for submitting your job application.',
         timeSent: '15:45:00 2023/05/01',

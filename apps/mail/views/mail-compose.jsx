@@ -1,7 +1,7 @@
 import { mailService } from '../services/mail.service.js'
 import { noteService } from '../../note/services/note.service.js'
 
-const { useNavigate, useParams } = ReactRouterDOM
+const { useNavigate, useParams,useSearchParams } = ReactRouterDOM
 const { useState, useEffect, useRef } = React
 
 export function MailCompose() {
@@ -18,6 +18,7 @@ export function MailCompose() {
   const inputRef = useRef()
   const navigate = useNavigate()
   const params = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
     if (params.noteId) loadNote()
@@ -50,8 +51,24 @@ export function MailCompose() {
         content = 'Todos: ' + note.info.todos.map((todo) => todo.txt).join(', ')
         break
     }
-    return content
-  }
+    function getcontent(note) {
+        let content = ''
+        switch (note.type) {
+            case 'txt':
+                content = note.info.txt
+                break
+            case 'img':
+                content ='Check out this photo I found online\n '+ note.info.url
+                break
+            case 'video':
+                content ='Check out this cool video!\n '+ `https://www.youtube.com/watch?v=${note.info.videoId}`
+                break
+            case 'todos':
+                content ='List: '+ note.info.todos.map(todo => todo.txt).join(', ')
+                break
+        }
+        return content
+    }
 
   function onSend(ev) {
     ev.preventDefault()
