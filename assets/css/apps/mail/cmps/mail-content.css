@@ -9,6 +9,10 @@
   border-radius: var(--border-radius-s);
 }
 
+.mail-content .back {
+  margin-block-end: 2.4rem;
+}
+
 .mail-content h2 {
   font-size: 2.4rem;
   margin-block-end: 0.6rem;
@@ -28,7 +32,12 @@
   margin-block-end: 2.4rem;
 }
 
-.mail-content button {
+.mail-content .mail-content-buttons {
+  gap: 1.2rem;
+}
+
+.mail-content button,
+.mail-content a {
   padding: 1.2rem 1.6rem;
   border-radius: var(--border-radius-s);
   font-weight: bold;

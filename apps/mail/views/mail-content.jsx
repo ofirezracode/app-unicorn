@@ -16,28 +16,28 @@ export function MailContent() {
   function onBack() {
     navigate('/mail')
   }
- function  onReply(){
-  navigate(`/mail/compose/${mail.id}`)
- }
- 
+  function onReply() {
+    navigate(`/mail/compose/${mail.id}`)
+  }
+
   if (!mail) return <p className="mail-content">loading mail </p>
   return (
     <section className="mail-content">
-      <button onClick={onReply} >
-        reply <i class="fa-solid fa-reply"></i>
-        </button>
+      <button className="back flex align-center" onClick={onBack}>
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
       <h2>{mail.title}</h2>
       <h3> From: {mail.from}</h3>
       <p>Sent at: {mail.timeSent}</p>
       <p>{mail.content}</p>
-      <button className="flex align-center" onClick={onBack}>
-        <i class="fa-solid fa-chevron-left"></i>
-        <p>Back</p>
-      </button>
-      
-      <Link to={`/note/${mail.id}`}>
-          save as note
+      <div className="mail-content-buttons flex align-center">
+        <Link className="flex align-center" to={`/note/${mail.id}`}>
+          <i className="fa-solid fa-note-sticky"></i>
         </Link>
+        <button className="flex align-center" onClick={onReply}>
+          <i class="fa-solid fa-reply"></i>
+        </button>
+      </div>
     </section>
   )
 }
