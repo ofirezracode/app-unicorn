@@ -26,7 +26,7 @@ body {
 .inbox.inbox-folder-button,
 .sent.sent-folder-button,
 .starred.starred-folder-button,
-.mail-table .mail-item:hover,
+.mail-table .mail-item,
 .mail-compose .input-container input,
 .mail-compose .input-container textarea,
 .user-msg {
@@ -39,6 +39,7 @@ body {
 .note-preview,
 .mail-sort,
 .mail-table,
+.mail-table .mail-item.read-mail,
 .mail-filter .input-container,
 .mail-folder,
 .mail-folder button,
@@ -56,6 +57,7 @@ body {
   color: var(--gray2);
 }
 
+.mail-table .mail-item:hover,
 .mail-index .compose,
 .mail-index .collapse,
 .mail-compose button,
