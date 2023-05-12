@@ -14,12 +14,11 @@ export function MailCompose() {
   // const [recipient, setRecipient] = use(newMail.recipient)
   // const [title, setTitle] = use(newMail.title)
   // const [content, setContent] = use(newMail.content)
-
+//  const [replyMail, setReplyMail] = useState(mailService.get('searchParams'))
   const inputRef = useRef()
   const navigate = useNavigate()
   const params = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
-
   useEffect(() => {
     if (params.noteId) loadNote()
     setNewMail(() => ({ ...mailService.getEmptyMail() }))
@@ -27,16 +26,15 @@ export function MailCompose() {
 
   function loadNote() {
     noteService.get(params.noteId).then((note) => {
-      console.log(note)
       const newMail = {
         title: note.info.title,
-        content: getcontent(note),
+        content: getContent(note),
       }
       setNewMail(newMail)
     })
   }
 
-  function getcontent(note) {
+  function getContent(note) {
     let content = ''
     switch (note.type) {
       case 'txt':
@@ -61,13 +59,11 @@ export function MailCompose() {
     const recipient = target.recipient.value
     const title = target.title.value
     const content = target.content.value
-    console.log(newMail)
     const updatedMail = {
       ...newMail,
       to: recipient,
       title,
       content,
-      //   timeSent,
     }
     mailService.save(updatedMail).then(() => navigate('/mail'))
   }

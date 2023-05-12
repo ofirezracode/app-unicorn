@@ -10,6 +10,7 @@ const { Link, useNavigate, useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
+    const [bookSearchParams, setBookSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter(searchParams))
     const [mails, setMails] = useState([])
     const [sort, setSort] = useState(null)

@@ -1,6 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 
-const { useParams, useNavigate, Link } = ReactRouterDOM
+const { useParams, useNavigate, Link,useSearchParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 export function MailContent() {
@@ -17,7 +17,7 @@ export function MailContent() {
     navigate('/mail')
   }
   function onReply() {
-    navigate(`/mail/compose/${mail.id}`)
+    navigate(`/mail/compose/?book=${mail.id}`)
   }
 
   if (!mail) return <p className="mail-content">loading mail </p>
