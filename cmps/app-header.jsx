@@ -2,19 +2,19 @@ const { useLocation, NavLink, Link } = ReactRouterDOM
 const { useEffect, useState } = React
 
 export function AppHeader() {
-  const location = useLocation()
-  const [appView, setAppView] = useState('')
+  // const location = useLocation()
+  // const [appView, setAppView] = useState('')
 
-  useEffect(() => {
-    if (location.pathname === '/note' || location.pathname.startsWith('/mail') || location.pathname === '/compose') {
-      setAppView('app-view')
-    } else {
-      setAppView('')
-    }
-  }, [location])
+  // useEffect(() => {
+  //   if (location.pathname === '/note' || location.pathname.startsWith('/mail') || location.pathname === '/compose') {
+  //     setAppView('app-view')
+  //   } else {
+  //     setAppView('')
+  //   }
+  // }, [location])
 
   return (
-    <header className={`app-header flex between ${appView}`}>
+    <header className="app-header flex between">
       <Link to="/">🦄</Link>
       <nav className="clean-list flex align-center">
         <li>
