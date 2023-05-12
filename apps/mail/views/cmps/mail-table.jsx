@@ -20,14 +20,9 @@ export function MailTable({ mails, onDeleteMail, onToggleStar }) {
 
   function onHandleClick(id) {
     mailService.setReadMail(id)
-    // ReadMail(id)
     navigate(`/mail/${id}`)
   }
 
-  // function ReadMail(id){
-
-  // }
-  // console.log(mailService.countUnread(mails))
   return (
     <ul className="mail-table clean-list flex column">
       {mails.map((mail) => (
