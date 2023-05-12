@@ -17,7 +17,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
   }
   const { txt, minSpeed } = filterByToEdit
   return (
-    <section className="mail-filter">
+    <section className="mail-filter flex">
       <form className="flex align-center" onSubmit={onSubmitFilter}>
         <div className="input-container flex align-center">
           <i className="fa-solid fa-magnifying-glass"></i>
