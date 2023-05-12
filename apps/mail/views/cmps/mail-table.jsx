@@ -32,16 +32,9 @@ export function MailTable({ mails, onDeleteMail, onToggleStar }) {
     <ul className="mail-table clean-list flex column">
       {mails.map((mail) => (
         <li className={`mail-item ${mail.isRead ? 'read-mail' : ''} flex`} key={mail.id}>
-          <div onClick={() => onToggleStar(mail.id)}>
-            {!mail.isStarred && <i className="fa-regular fa-star"></i>}
-            {mail.isStarred && <i className="fa-solid fa-star"></i>}
-          </div>
-          <MailPreview mail={mail} onHandleClick={onHandleClick} />
-          <div>
-            <button onClick={() => onDeleteMail(mail.id)}>
-              <i className="fa-solid fa-trash"></i>
-            </button>
-          </div>
+          
+          <MailPreview mail={mail} onDeleteMail={onDeleteMail} onHandleClick={onHandleClick} onToggleStar={onToggleStar} />
+          
         </li>
       ))}
     </ul>
