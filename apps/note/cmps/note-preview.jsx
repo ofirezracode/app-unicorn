@@ -51,7 +51,7 @@ export function NotePreview({ note, onDeleteNote, onEditNote, onPinNote, onDupli
           <i className="fa-solid fa-fill"></i>
           <input onChange={(e) => onSetNoteColor(e)} type="color" />
         </label>
-        <Link to={`/mail/compose?noteId=${note.id}`}>
+        <Link to={`/mail/compose/${note.id}`}>
           <i className="fa-solid fa-envelope"></i>
         </Link>
         <button onClick={() => onDuplicateNote(note)}>
