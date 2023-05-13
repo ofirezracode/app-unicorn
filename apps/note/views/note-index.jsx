@@ -1,4 +1,5 @@
 import { noteService } from '../services/note.service.js'
+import { mailService } from '../../mail/services/mail.service.js'
 
 import { NoteList } from '../cmps/note-list.jsx'
 import { NewNote } from '../cmps/new-note.jsx'
@@ -7,11 +8,35 @@ import { FilterNotes } from '../cmps/filter-notes.jsx'
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouterDOM
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([])
-  // const [selectedNote, setSelectedNote] = useState(null)
   const [filterBy, setFilterBy] = useState({})
+  const params = useParams()
+  const navigate = useNavigate()
+  // const history = useHistory()
+
+  useEffect(() => {
+    if (Object.keys(params).length > 0) {
+      console.log('params', params)
+      mailService.get(params.mailId).then((mail) => {
+        const note = {
+          createdAt: Date.now(),
+          type: 'txt',
+          isPinned: false,
+          info: {
+            title: 'New text',
+            txt: mail.content,
+          },
+        }
+        // history.push('/note')
+        // console.log('passed history')
+        navigate('/note')
+        onAddNote(note)
+      })
+    }
+  }, [])
 
   useEffect(() => {
     loadNotes()

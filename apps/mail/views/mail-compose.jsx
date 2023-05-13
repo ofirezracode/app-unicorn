@@ -14,13 +14,12 @@ export function MailCompose() {
   // const [recipient, setRecipient] = use(newMail.recipient)
   // const [title, setTitle] = use(newMail.title)
   // const [content, setContent] = use(newMail.content)
-//  const [replyMail, setReplyMail] = useState(mailService.get('searchParams'))
+  //  const [replyMail, setReplyMail] = useState(mailService.get('searchParams'))
   const inputRef = useRef()
   const navigate = useNavigate()
   const params = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   useEffect(() => {
-    
     if (params.noteId) loadNote()
     setNewMail(() => ({ ...mailService.getEmptyMail() }))
   }, [])
@@ -52,7 +51,7 @@ export function MailCompose() {
         content = 'Todos: ' + note.info.todos.map((todo) => todo.txt).join(', ')
         break
     }
-    return content 
+    return content
   }
 
   function onSend(ev) {
@@ -90,13 +89,13 @@ export function MailCompose() {
       <form className="mail-compose flex column" onSubmit={onSend}>
         <div className="input-container flex align-center">
           <label className="flex center" htmlFor="recipient">
-            <i class="fa-solid fa-envelope"></i>
+            <i className="fa-solid fa-envelope"></i>
           </label>
           <input onChange={handleChange} value={newMail.recipient} type="text" id="recipient" name="recipient" placeholder="Recipient..." />
         </div>
         <div className="input-container flex align-center">
           <label className="flex center" htmlFor="title">
-            <i class="fa-solid fa-heading"></i>
+            <i className="fa-solid fa-heading"></i>
           </label>
           <input onChange={handleChange} value={newMail.title} type="text" id="title" name="title" placeholder="Title..." />
         </div>
@@ -105,7 +104,7 @@ export function MailCompose() {
         </div>
         <div className="mail-compose-buttons">
           <button className="back-btn flex center" onClick={onBack}>
-            <i class="fa-solid fa-arrow-left"></i>
+            <i className="fa-solid fa-arrow-left"></i>
           </button>
           <button className="submit-btn" type="submit">
             Send <i className="fa-solid fa-paper-plane"></i>
