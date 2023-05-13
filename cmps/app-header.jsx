@@ -39,7 +39,7 @@ export function AppHeader() {
         </li>
         <li>
           <NavLink to="/books">
-          <i class="fa-solid fa-book"></i>
+            <i className="fa-solid fa-book"></i>
           </NavLink>
         </li>
       </nav>
