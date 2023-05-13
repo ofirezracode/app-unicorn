@@ -4,6 +4,7 @@ const { useParams, useNavigate, Link,useSearchParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 export function MailContent() {
+ 
   const navigate = useNavigate()
   const { mailId } = useParams()
   const [mail, setMail] = useState(null)
@@ -16,8 +17,9 @@ export function MailContent() {
   function onBack() {
     navigate('/mail')
   }
-  function onReply() {
-    navigate(`/mail/compose/?book=${mail.id}`)
+  function onReply() {  
+    navigate(`/mail/compose`)
+    
   }
 
   if (!mail) return <p className="mail-content">loading mail </p>
