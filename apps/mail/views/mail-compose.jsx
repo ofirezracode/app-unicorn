@@ -20,6 +20,7 @@ export function MailCompose() {
   const params = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   useEffect(() => {
+    
     if (params.noteId) loadNote()
     setNewMail(() => ({ ...mailService.getEmptyMail() }))
   }, [])
@@ -30,6 +31,7 @@ export function MailCompose() {
         title: note.info.title,
         content: getContent(note),
       }
+      console.log(newMail)
       setNewMail(newMail)
     })
   }
@@ -50,6 +52,7 @@ export function MailCompose() {
         content = 'Todos: ' + note.info.todos.map((todo) => todo.txt).join(', ')
         break
     }
+    return content 
   }
 
   function onSend(ev) {
