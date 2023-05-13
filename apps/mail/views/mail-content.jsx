@@ -1,6 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 
-const { useParams, useNavigate, Link,useSearchParams } = ReactRouterDOM
+const { useParams, useNavigate, Link, useSearchParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 export function MailContent() {
@@ -26,7 +26,7 @@ export function MailContent() {
   return (
     <section className="mail-content">
       <button className="back flex align-center" onClick={onBack}>
-        <i class="fa-solid fa-arrow-left"></i>
+        <i className="fa-solid fa-arrow-left"></i>
       </button>
       <h2>{mail.title}</h2>
       <h3> From: {mail.from}</h3>
@@ -37,7 +37,7 @@ export function MailContent() {
           <i className="fa-solid fa-note-sticky"></i>
         </Link>
         <button className="flex align-center" onClick={onReply}>
-          <i class="fa-solid fa-reply"></i>
+          <i className="fa-solid fa-reply"></i>
         </button>
       </div>
     </section>

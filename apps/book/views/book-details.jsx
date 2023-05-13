@@ -89,7 +89,7 @@ export function BookDetails() {
       <article className="book-details-container">
         <img src={book.thumbnail} alt="" />
         <div className="book-details-info">
-          <div className="book-title-container flex justify-between">
+          <div className="book-title-container flex between">
             <h2>{book.title}</h2>
             <p className={`book-price ${priceClass} flex align-center`}>{bookService.getPrice(book)}</p>
           </div>

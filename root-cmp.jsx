@@ -10,14 +10,12 @@ import { MailIndex } from './apps/mail/views/mail-index.jsx'
 import { MailContent } from './apps/mail/views/mail-content.jsx'
 import { MailCompose } from './apps/mail/views/mail-compose.jsx'
 
-
 import { BookIndex } from './apps/book/views/book-index.jsx'
 import { BookDetails } from './apps/book/views/book-details.jsx'
 import { BookEdit } from './apps/book/views/book-edit.jsx'
 import { BookAdd } from './apps/book/views/book-add.jsx'
 import { BookMsg } from './apps/book/cmps/user-msg.jsx'
 import { AddReview } from './apps/book/cmps/add-review.jsx'
-
 
 import { NoteIndex } from './apps/note/views/note-index.jsx'
 
@@ -37,10 +35,8 @@ export function App() {
             <Route path="mail/compose/:mailId" element={<MailCompose />} />
 
             <Route path="/note" element={<NoteIndex />} />
-
-            <Route path="/books" element={<BookIndex />}>
-              {/* <Route path="/books/edit" element={<BookDetails/>}></Route> */}
-            </Route>
+            <Route path="/note/:mailId" element={<NoteIndex />} />
+            <Route path="/books" element={<BookIndex />}></Route>
             <Route path="/books/:bookId" element={<BookDetails />}></Route>
             <Route path="/books/edit/:bookId" element={<BookEdit />}></Route>
             <Route path="/books/edit" element={<BookEdit />}></Route>

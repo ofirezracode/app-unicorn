@@ -4,7 +4,7 @@ export function Home() {
       <div>
         <h1>🦄 Unicorp</h1>
         <p>Yalla balagan!</p>
-        <p>Delivery3 - Thursday 21:00</p>
+        <p>Delivery4 - Saturday 22:00</p>
         <a href="#">Test</a>
       </div>
       <div></div>
