@@ -1,7 +1,7 @@
 import { mailService } from '../services/mail.service.js'
 import { noteService } from '../../note/services/note.service.js'
 
-const { useNavigate, useParams, useSearchParams } = ReactRouterDOM
+const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect, useRef } = React
 
 export function MailCompose() {
@@ -17,8 +17,7 @@ export function MailCompose() {
   //  const [replyMail, setReplyMail] = useState(mailService.get('searchParams'))
   const inputRef = useRef()
   const navigate = useNavigate()
-  const params = useParams()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const params = useParams() 
   useEffect(() => {
     if (params.noteId) loadNote()
     setNewMail(() => ({ ...mailService.getEmptyMail() }))

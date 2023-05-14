@@ -1,12 +1,11 @@
 import { MailTable } from './cmps/mail-table.jsx'
 import { mailService } from '../services/mail.service.js'
-// import { MailPreview } from '../cmps/mail-preview.jsx'
 import { MailFilter } from '../cmps/mail-filter.jsx'
 import { MailSort } from '../cmps/mail-sort.jsx'
 import { MailFolder } from '../cmps/mail-folder.jsx'
 
 const { useState, useEffect } = React
-const { Link, useNavigate, useSearchParams } = ReactRouterDOM
+const {  useNavigate, useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()

@@ -33,6 +33,7 @@ export function App() {
             <Route path="/mail/compose" element={<MailCompose />} />
             <Route path="mail/compose/:noteId" element={<MailCompose />} />
             <Route path="mail/compose/:mailId" element={<MailCompose />} />
+
             <Route path="/note" element={<NoteIndex />} />
             <Route path="/note/:mailId" element={<NoteIndex />} />
             <Route path="/books" element={<BookIndex />}></Route>
