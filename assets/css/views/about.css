@@ -1,0 +1,12 @@
+.about {
+  margin-block-start: 3.2rem;
+}
+.about h1 {
+  font-size: 4.8rem;
+  margin-block-end: 2.4rem;
+}
+
+.about p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
