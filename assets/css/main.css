@@ -3,7 +3,6 @@
 @import './apps/book/assets/style/setup/colors.css';
 
 /* Views */
-@import './apps/book/assets/style/views/home.css';
 @import './apps/book/assets/style/views/book-index.css';
 @import './apps/book/assets/style/views/about-us.css';
 @import './apps/book/assets/style/views/book-details.css';

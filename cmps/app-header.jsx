@@ -1,18 +1,6 @@
-const { useLocation, NavLink, Link } = ReactRouterDOM
-const { useEffect, useState } = React
+const { NavLink, Link } = ReactRouterDOM
 
 export function AppHeader() {
-  // const location = useLocation()
-  // const [appView, setAppView] = useState('')
-
-  // useEffect(() => {
-  //   if (location.pathname === '/note' || location.pathname.startsWith('/mail') || location.pathname === '/compose') {
-  //     setAppView('app-view')
-  //   } else {
-  //     setAppView('')
-  //   }
-  // }, [location])
-
   return (
     <header className="app-header flex between">
       <Link to="/">🦄 Unicorp</Link>
